@@ -1,277 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Personal portfolio — designer & developer. Selected work, skills and contact." />
-<meta name="theme-color" content="#05030a" />
-<title>PORTFOLIO — Selected Work</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
-<style>
-  :root{
-    --bg:#05030a; --bg2:#0b0716; --ink:#eaf6ff; --muted:#7d8aa6;
-    --neon:#00f0ff; --neon2:#ff00a0; --neon3:#b026ff; --neon4:#39ff14;
-    --line:rgba(0,240,255,.16); --card:rgba(10,6,22,.62);
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--ink);font-family:'Rajdhani',system-ui,sans-serif;font-weight:400;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
-  .fx{position:fixed;inset:0;z-index:0;pointer-events:none}
-  .fx::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(0,240,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,0,160,.05) 1px,transparent 1px);background-size:44px 44px;transform:perspective(420px) rotateX(58deg) scale(2.1);transform-origin:50% 100%;animation:grid 9s linear infinite;mask-image:radial-gradient(ellipse 70% 55% at 50% 100%,#000 8%,transparent 72%);-webkit-mask-image:radial-gradient(ellipse 70% 55% at 50% 100%,#000 8%,transparent 72%)}
-  @keyframes grid{to{background-position:0 44px,44px 0}}
-  .fx::after{content:'';position:absolute;inset:0;opacity:.5;background:repeating-linear-gradient(180deg,rgba(0,0,0,0) 0 2px,rgba(0,0,0,.35) 2px 3px);mix-blend-mode:multiply}
-  .glow{position:absolute;border-radius:50%;filter:blur(110px);opacity:.42}
-  .glow.a{width:560px;height:560px;background:var(--neon3);top:-200px;left:-140px}
-  .glow.b{width:520px;height:520px;background:var(--neon2);bottom:-220px;right:-160px;opacity:.3}
+<html lang="en"> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <meta name="description" content="Personal portfolio — designer & developer. Selected work, skills and contact." /> <meta name="theme-color" content="#f4f1ea" /> <title>PORTFOLIO — Selected Work</title> <link rel="preconnect" href="https://fonts.googleapis.com" /> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,600;9..144,900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" /> <style> :root{ --paper:#f4f1ea; --paper2:#eae5da; --ink:#141210; --ink2:#3d3833; --muted:#8a8177; --rule:#d5cec1; --accent:#c8452b; --accent2:#1c4b8a; } *{box-sizing:border-box;margin:0;padding:0} html{scroll-behavior:smooth} body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden} ::selection{background:var(--ink);color:var(--paper)}
 
-  .wrap{position:relative;z-index:2;max-width:1120px;margin:0 auto;padding:0 22px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 26px}
+.mono{font-family:'JetBrains Mono',monospace}
 
-  nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(5,3,10,.72);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
-  nav.scrolled{border-bottom-color:var(--line);box-shadow:0 0 34px -14px var(--neon)}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
-  .brand{display:flex;align-items:center;gap:11px;font-family:'Orbitron',sans-serif;font-weight:900;letter-spacing:.14em;font-size:.98rem;text-transform:uppercase}
-  .brand .mark{width:14px;height:14px;background:var(--neon);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);box-shadow:0 0 16px var(--neon),0 0 34px var(--neon);animation:blink 2.6s ease-in-out infinite}
-  @keyframes blink{50%{opacity:.45}}
-  .brand em{color:var(--neon);font-style:normal;text-shadow:0 0 10px var(--neon),0 0 26px var(--neon)}
-  .nav-links{display:flex;gap:26px;font-family:'Share Tech Mono',monospace;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase}
-  .nav-links a{color:var(--muted);text-decoration:none;transition:color .2s,text-shadow .2s}
-  .nav-links a:hover{color:var(--neon);text-shadow:0 0 12px var(--neon)}
-  @media(max-width:660px){.nav-links{display:none}}
+nav{position:sticky;top:0;z-index:30;background:rgba(244,241,234,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{font-family:'Fraunces',serif;font-weight:900;font-size:1.06rem;letter-spacing:-.02em}
+.brand span{color:var(--accent)}
+.nav-links{display:flex;gap:24px;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+.nav-links a{color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+@media(max-width:700px){.nav-links{display:none}}
+.issue{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+@media(max-width:700px){.issue{display:none}}
 
-  header{padding:92px 0 64px;position:relative}
-  .tag{display:inline-flex;align-items:center;gap:9px;font-family:'Share Tech Mono',monospace;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--neon);border:1px solid var(--line);border-radius:2px;padding:8px 15px;margin-bottom:28px;background:rgba(0,240,255,.05)}
-  .tag i{width:7px;height:7px;border-radius:50%;background:var(--neon4);box-shadow:0 0 12px var(--neon4);animation:blink 1.8s infinite}
-  h1{font-family:'Orbitron',sans-serif;font-weight:900;font-size:clamp(2.1rem,6.2vw,4rem);line-height:1.06;letter-spacing:.01em}
-  h1 .grad{background:linear-gradient(92deg,var(--neon),var(--neon3) 48%,var(--neon2));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .role{font-family:'Share Tech Mono',monospace;color:var(--muted);margin-top:20px;font-size:.95rem;letter-spacing:.06em}
-  .role b{color:var(--ink)}
-  .lede{margin-top:22px;max-width:620px;color:#aebbd4;font-size:1.06rem;line-height:1.72}
-  .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
-  .btn{font-family:'Share Tech Mono',monospace;font-size:.84rem;letter-spacing:.12em;text-transform:uppercase;padding:13px 24px;border-radius:2px;text-decoration:none;transition:transform .18s,box-shadow .18s,background .18s}
-  .btn-primary{background:var(--neon);color:#04121a;font-weight:700;box-shadow:0 0 26px -4px var(--neon)}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 38px -2px var(--neon)}
-  .btn-ghost{border:1px solid var(--line);color:var(--ink);background:rgba(0,240,255,.04)}
-  .btn-ghost:hover{border-color:var(--neon);box-shadow:0 0 22px -8px var(--neon)}
+header{padding:70px 0 40px;border-bottom:1px solid var(--rule)}
+.kicker{display:flex;align-items:center;gap:14px;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:26px}
+.kicker::after{content:'';flex:1;height:1px;background:var(--rule)}
+h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(2.6rem,9vw,6.2rem);line-height:.94;letter-spacing:-.035em;font-variation-settings:'opsz' 144}
+h1 em{font-style:italic;font-weight:300;color:var(--accent)}
+.masthead{display:grid;grid-template-columns:1.6fr .9fr;gap:48px;align-items:end;margin-top:40px}
+@media(max-width:900px){.masthead{grid-template-columns:1fr;gap:26px}}
+.standfirst{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(1.12rem,2.3vw,1.5rem);line-height:1.5;color:var(--ink2);max-width:34ch}
+.standfirst b{font-weight:600}
+.byline{border-left:2px solid var(--ink);padding-left:16px}
+.byline dt{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.byline dd{font-family:'Fraunces',serif;font-weight:600;font-size:1rem;margin-bottom:14px}
+.byline dd:last-child{margin-bottom:0}
 
-  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center;margin-top:56px}
-  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:34px}}
-  .term{border:1px solid var(--line);border-radius:6px;background:rgba(6,3,14,.9);overflow:hidden;box-shadow:0 0 60px -22px var(--neon3)}
-  .term-bar{display:flex;align-items:center;gap:8px;padding:11px 14px;background:rgba(255,255,255,.03);border-bottom:1px solid var(--line)}
-  .dot{width:10px;height:10px;border-radius:50%}
-  .dot.r{background:#ff5f57}.dot.y{background:#febc2e}.dot.g{background:#28c840}
-  .term-title{margin-left:8px;font-family:'Share Tech Mono',monospace;font-size:.74rem;color:var(--muted);letter-spacing:.08em}
-  .term-body{padding:18px;font-family:'Share Tech Mono',monospace;font-size:.82rem;line-height:1.85;color:#9fe9ff}
-  .term-body .k{color:var(--neon2)}.term-body .s{color:var(--neon4)}.term-body .c{color:var(--muted)}
-  .cursor{display:inline-block;width:9px;height:15px;background:var(--neon);vertical-align:-2px;animation:blink 1s steps(2) infinite}
+section{padding:66px 0;border-bottom:1px solid var(--rule)}
+.sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:38px}
+.sec-num{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--accent);letter-spacing:.1em}
+h2{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(1.6rem,4vw,2.6rem);letter-spacing:-.025em;line-height:1.05}
+.sec-head .note{margin-left:auto;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+@media(max-width:640px){.sec-head .note{display:none}}
 
-  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px}
-  @media(max-width:660px){.stats{grid-template-columns:1fr}}
-  .stat{border:1px solid var(--line);border-radius:4px;padding:20px;background:var(--card);text-align:center}
-  .stat b{display:block;font-family:'Orbitron',sans-serif;font-size:1.9rem;color:var(--neon);text-shadow:0 0 18px var(--neon)}
-  .stat span{font-family:'Share Tech Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.work{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--rule)}
+@media(max-width:760px){.work{grid-template-columns:1fr}}
+.card{padding:32px 30px 32px 0;border-bottom:1px solid var(--rule);position:relative;transition:background .25s}
+.work .card:nth-child(odd){padding-right:36px;border-right:1px solid var(--rule)}
+.work .card:nth-child(even){padding-left:36px}
+@media(max-width:760px){.work .card:nth-child(odd){padding-right:0;border-right:none}.work .card:nth-child(even){padding-left:0}}
+.card:hover{background:var(--paper2)}
+.card .no{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.16em;color:var(--accent);text-transform:uppercase}
+.card h3{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.25rem,2.6vw,1.75rem);letter-spacing:-.02em;margin:12px 0 10px;line-height:1.15}
+.card h3::after{content:'\2197';font-size:.8em;color:var(--muted);margin-left:8px;transition:transform .2s,color .2s;display:inline-block}
+.card:hover h3::after{transform:translate(3px,-3px);color:var(--accent)}
+.card p{color:var(--ink2);font-size:.98rem;line-height:1.7;max-width:44ch}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.chip{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.06em;color:var(--ink2);border:1px solid var(--rule);border-radius:999px;padding:3px 10px;background:var(--paper)}
 
-  section{padding:78px 0;position:relative}
-  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:40px;flex-wrap:wrap}
-  .sec-num{font-family:'Share Tech Mono',monospace;color:var(--neon);font-size:.82rem;letter-spacing:.2em}
-  h2{font-family:'Orbitron',sans-serif;font-weight:700;font-size:clamp(1.5rem,3.6vw,2.2rem);letter-spacing:.02em}
-  .sec-head p{color:var(--muted);font-family:'Share Tech Mono',monospace;font-size:.82rem}
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0;border-top:1px solid var(--rule)}
+.skill{padding:26px 24px 26px 0;border-bottom:1px solid var(--rule)}
+.skill+.skill{border-left:1px solid var(--rule);padding-left:24px}
+@media(max-width:640px){.skill+.skill{border-left:none;padding-left:0}}
+.skill h4{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;letter-spacing:-.01em;margin-bottom:6px}
+.skill .lvl{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:14px}
+.skill p{color:var(--ink2);font-size:.92rem;line-height:1.65}
+.bar{height:2px;background:var(--rule);margin-top:16px;position:relative;overflow:hidden}
+.bar i{position:absolute;inset:0 auto 0 0;background:var(--ink);display:block}
 
-  .work{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
-  .card{border:1px solid var(--line);border-radius:5px;background:var(--card);padding:26px;position:relative;overflow:hidden;transition:transform .22s,border-color .22s,box-shadow .22s}
-  .card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--neon),var(--neon3),var(--neon2));opacity:0;transition:opacity .22s}
-  .card:hover{transform:translateY(-4px);border-color:rgba(0,240,255,.4);box-shadow:0 20px 50px -28px var(--neon)}
-  .card:hover::before{opacity:1}
-  .card .no{font-family:'Share Tech Mono',monospace;font-size:.72rem;color:var(--neon);letter-spacing:.18em}
-  .card h3{font-family:'Orbitron',sans-serif;font-size:1.12rem;margin:12px 0 10px;letter-spacing:.03em}
-  .card p{color:#a3b1c9;line-height:1.68;font-size:.98rem}
-  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-  .chip{font-family:'Share Tech Mono',monospace;font-size:.7rem;letter-spacing:.08em;color:var(--neon);border:1px solid var(--line);border-radius:2px;padding:4px 9px;background:rgba(0,240,255,.05)}
+.about{display:grid;grid-template-columns:1.15fr .85fr;gap:52px;align-items:start}
+@media(max-width:860px){.about{grid-template-columns:1fr;gap:34px}}
+.about .drop::first-letter{font-family:'Fraunces',serif;font-weight:900;font-size:3.6rem;float:left;line-height:.82;padding:6px 12px 0 0;color:var(--accent)}
+.about p{color:var(--ink2);font-size:1.04rem;line-height:1.8;margin-bottom:18px}
+.about p b{color:var(--ink);font-weight:600}
+.timeline{border-top:2px solid var(--ink)}
+.tl-item{padding:20px 0;border-bottom:1px solid var(--rule)}
+.tl-item .yr{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.12em;color:var(--accent)}
+.tl-item b{display:block;font-family:'Fraunces',serif;font-weight:600;font-size:1.02rem;margin:6px 0 4px}
+.tl-item p{color:var(--muted);font-size:.9rem;line-height:1.6;margin:0}
 
-  .skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-  .skill{border:1px solid var(--line);border-radius:5px;background:var(--card);padding:22px}
-  .skill h4{font-family:'Orbitron',sans-serif;font-size:.92rem;letter-spacing:.06em;margin-bottom:14px;color:var(--neon)}
-  .bar{height:5px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;margin:10px 0 6px}
-  .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--neon),var(--neon3));box-shadow:0 0 14px -2px var(--neon)}
-  .skill small{font-family:'Share Tech Mono',monospace;font-size:.72rem;color:var(--muted);display:flex;justify-content:space-between}
+.contact{padding:80px 0;border-bottom:none;text-align:center}
+.contact .kicker{justify-content:center}
+.contact .kicker::after{display:none}
+.contact h2{font-size:clamp(2rem,7vw,4.4rem);margin-bottom:20px}
+.contact h2 em{font-style:italic;font-weight:300;color:var(--accent)}
+.contact p{color:var(--ink2);max-width:52ch;margin:0 auto 34px;font-size:1.05rem;line-height:1.75}
+.cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:15px 30px;border-radius:999px;text-decoration:none;transition:transform .18s,background .18s,color .18s;border:1px solid var(--ink)}
+.btn-primary{background:var(--ink);color:var(--paper)}
+.btn-primary:hover{transform:translateY(-2px);background:var(--accent);border-color:var(--accent)}
+.btn-ghost{color:var(--ink);background:transparent}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
 
-  .about{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-  @media(max-width:860px){.about{grid-template-columns:1fr;gap:28px}}
-  .about p{color:#aebbd4;line-height:1.82;font-size:1.02rem;margin-bottom:16px}
-  .about p b{color:var(--ink)}
-  .timeline{border-left:1px solid var(--line);padding-left:22px;display:flex;flex-direction:column;gap:22px}
-  .tl-item{position:relative}
-  .tl-item::before{content:'';position:absolute;left:-28px;top:6px;width:9px;height:9px;border-radius:50%;background:var(--neon);box-shadow:0 0 14px var(--neon)}
-  .tl-item b{font-family:'Orbitron',sans-serif;font-size:.88rem;letter-spacing:.04em;display:block}
-  .tl-item span{font-family:'Share Tech Mono',monospace;font-size:.74rem;color:var(--neon2);letter-spacing:.08em}
-  .tl-item p{color:var(--muted);font-size:.92rem;line-height:1.6;margin-top:6px}
+footer{padding:34px 0}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.foot a{color:var(--muted);text-decoration:none}
+.foot a:hover{color:var(--ink)}
 
-  .contact{text-align:center;border:1px solid var(--line);border-radius:6px;background:var(--card);padding:52px 24px;position:relative;overflow:hidden}
-  .contact::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 0%,rgba(0,240,255,.12),transparent 70%);pointer-events:none}
-  .contact h2{margin-bottom:16px}
-  .contact p{color:#aebbd4;max-width:520px;margin:0 auto 30px;line-height:1.74}
-  .contact .cta{justify-content:center}
-
-  footer{border-top:1px solid var(--line);padding:34px 0;margin-top:40px}
-  .foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-family:'Share Tech Mono',monospace;font-size:.76rem;color:var(--muted);letter-spacing:.06em}
-  .foot a{color:var(--muted);text-decoration:none;transition:color .2s}
-  .foot a:hover{color:var(--neon)}
-
-  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
-  .reveal.in{opacity:1;transform:none}
-  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
-</head>
-<body>
-<div class="fx"><div class="glow a"></div><div class="glow b"></div></div>
 
-<nav id="nav">
-  <div class="wrap nav-inner">
-    <div class="brand"><span class="mark"></span>PORT<em>FOLIO</em></div>
-    <div class="nav-links">
-      <a href="#work">Work</a>
-      <a href="#skills">Skills</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
-</nav>
-
-<header id="top">
-  <div class="wrap">
-    <span class="tag"><i></i> Available for select projects — 2026</span>
-    <h1 class="reveal">Design. Build.<br /><span class="grad">Ship quietly brilliant.</span></h1>
-    <p class="role">Independent <b>designer & developer</b> — interface, front-end, tooling.</p>
-    <p class="lede reveal">আমি ইন্টারফেস ডিজাইন আর ফ্রন্ট-এন্ড ডেভেলপমেন্ট নিয়ে কাজ করি — যেখানে সৌন্দর্য আর পারফরম্যান্স একসাথে চলে। কোনো বাড়তি ফ্রেমওয়ার্ক নয়, শুধু পরিষ্কার কোড আর যত্ন নেওয়া ডিটেইল।</p>
-    <div class="cta reveal">
-      <a class="btn btn-primary" href="#work">View Work ▸</a>
-      <a class="btn btn-ghost" href="#contact">Get in Touch</a>
-    </div>
-
-    <div class="hero-grid">
-      <div class="term reveal">
-        <div class="term-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="term-title">~/portfolio — zsh</span></div>
-        <div class="term-body">
-          <div><span class="c">$</span> whoami</div>
-          <div><span class="s">designer · front-end dev</span></div>
-          <div><span class="c">$</span> ls skills/</div>
-          <div><span class="k">ui</span> <span class="k">ux</span> <span class="k">html</span> <span class="k">css</span> <span class="k">js</span> <span class="k">a11y</span></div>
-          <div><span class="c">$</span> cat status.txt</div>
-          <div><span class="s">open to work</span> <span class="cursor"></span></div>
-        </div>
-      </div>
-      <div class="stats reveal">
-        <div class="stat"><b>6+</b><span>Years</span></div>
-        <div class="stat"><b>40+</b><span>Projects</span></div>
-        <div class="stat"><b>100</b><span>Lighthouse</span></div>
-      </div>
-    </div>
-  </div>
-</header>
-
-<section id="work">
-  <div class="wrap">
-    <div class="sec-head"><span class="sec-num">01 /</span><h2>Selected Work</h2><p>নির্বাচিত কিছু কাজ</p></div>
-    <div class="work">
-      <article class="card reveal">
-        <span class="no">PROJECT-01</span>
-        <h3>Nebula Dashboard</h3>
-        <p>একটি রিয়েল-টাইম অ্যানালিটিক্স ড্যাশবোর্ড — লাইটওয়েট, দ্রুত, আর ডেটা-ডেন্স লেআউটে স্পষ্ট।</p>
-        <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Chart.js</span></div>
-      </article>
-      <article class="card reveal">
-        <span class="no">PROJECT-02</span>
-        <h3>Kite Commerce</h3>
-        <p>ছোট ব্যবসার জন্য একটি স্টোরফ্রন্ট — মোবাইল-ফার্স্ট, দ্রুত লোড, সিম্পল চেকআউট।</p>
-        <div class="chips"><span class="chip">UI/UX</span><span class="chip">JS</span><span class="chip">Responsive</span></div>
-      </article>
-      <article class="card reveal">
-        <span class="no">PROJECT-03</span>
-        <h3>Pulse Landing Kit</h3>
-        <p>সিঙ্গেল-ফাইল ল্যান্ডিং টেমপ্লেট কিট — বিল্ড স্টেপ নেই, কপি করলেই ব্যবহারযোগ্য।</p>
-        <div class="chips"><span class="chip">Template</span><span class="chip">Zero-build</span><span class="chip">A11y</span></div>
-      </article>
-      <article class="card reveal">
-        <span class="no">PROJECT-04</span>
-        <h3>Quiet Portfolio</h3>
-        <p>একটি মিনিমাল পোর্টফোলিও সিস্টেম — টাইপোগ্রাফি-কেন্দ্রিক, রিডেবিলিটি প্রাধান্য পায়।</p>
-        <div class="chips"><span class="chip">Design</span><span class="chip">CSS Grid</span><span class="chip">Motion</span></div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="skills">
-  <div class="wrap">
-    <div class="sec-head"><span class="sec-num">02 /</span><h2>Skills</h2><p>যা দিয়ে কাজ করি</p></div>
-    <div class="skill-grid">
-      <div class="skill reveal">
-        <h4>Interface Design</h4>
-        <div class="bar"><i style="width:92%"></i></div><small><span>Layout · Type · Color</span><span>92%</span></small>
-      </div>
-      <div class="skill reveal">
-        <h4>Front-end</h4>
-        <div class="bar"><i style="width:88%"></i></div><small><span>HTML · CSS · JS</span><span>88%</span></small>
-      </div>
-      <div class="skill reveal">
-        <h4>Performance</h4>
-        <div class="bar"><i style="width:85%"></i></div><small><span>Speed · Core Web Vitals</span><span>85%</span></small>
-      </div>
-      <div class="skill reveal">
-        <h4>Accessibility</h4>
-        <div class="bar"><i style="width:80%"></i></div><small><span>WCAG · Semantics</span><span>80%</span></small>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="about">
-  <div class="wrap">
-    <div class="sec-head"><span class="sec-num">03 /</span><h2>About</h2><p>একটু পরিচয়</p></div>
-    <div class="about">
-      <div class="reveal">
-        <p>আমি ডিজাইন আর কোড—দুটোকেই সমান গুরুত্ব দিই। আমার কাছে ভালো ইন্টারফেস মানে হলো <b>যেটা বুঝতে কষ্ট হয় না</b>, আর ভালো কোড মানে যেটা পরে নিজে পড়েও বুঝতে পারি।</p>
-        <p>বেশিরভাগ কাজ করি ওয়েব নিয়ে — ল্যান্ডিং পেজ, ড্যাশবোর্ড, টুলিং আর ডিজাইন সিস্টেম। ছোট টিমের সাথে সরাসরি কাজ করতে ভালো লাগে, যেখানে আইডিয়া থেকে শিপিং পর্যন্ত পুরোটা দেখা যায়।</p>
-      </div>
-      <div class="timeline reveal">
-        <div class="tl-item"><span>2023 — এখন</span><b>Independent</b><p>ফ্রিল্যান্স ডিজাইন ও ফ্রন্ট-এন্ড — ক্লায়েন্টদের সাথে সরাসরি।</p></div>
-        <div class="tl-item"><span>2020 — 2023</span><b>Product Studio</b><p>প্রোডাক্ট টিমে UI/UX ও ফ্রন্ট-এন্ড ইমপ্লিমেন্টেশন।</p></div>
-        <div class="tl-item"><span>2018 — 2020</span><b>Self-taught</b><p>HTML/CSS/JS শেখা আর ছোট প্রজেক্ট বানানো থেকে শুরু।</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="wrap">
-    <div class="contact reveal">
-      <span class="tag"><i></i> Open to work</span>
-      <h2>Let's build something.</h2>
-      <p>কোনো আইডিয়া থাকলে বা কাজের কথা বলতে চাইলে একটা মেসেজ দাও — আমি সাধারণত ২৪ ঘণ্টার মধ্যে রিপ্লাই দিই।</p>
-      <div class="cta">
-        <a class="btn btn-primary" href="mailto:hello@example.com">Say Hello ▸</a>
-        <a class="btn btn-ghost" href="#work">See Work</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap foot">
-    <span>© 2026 — Portfolio</span>
-    <span>Built with clean HTML · CSS · JS</span>
-  </div>
-</footer>
-
-<script>
-  const nav = document.getElementById('nav');
-  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 12), {passive:true});
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, {threshold:0.12});
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-</script>
-</body>
-</html>
+</head> <body><nav> <div class="wrap nav-inner"> <div class="brand">PORT<span>FOLIO</span></div> <div class="issue">Vol. 2026 — Selected Work</div> <div class="nav-links"> <a href="#work">Work</a> <a href="#skills">Skills</a> <a href="#about">About</a> <a href="#contact">Contact</a> </div> </div> </nav><header> <div class="wrap"> <div class="kicker">Available for select projects</div> <h1>Design.<br />Build.<br /><em>Ship quietly brilliant.</em></h1> <div class="masthead"> <p class="standfirst reveal">আমি ইন্টারফেস ডিজাইন আর ফ্রন্ট-এন্ড ডেভেলপমেন্ট নিয়ে কাজ করি — যেখানে <b>সৌন্দর্য আর পারফরম্যান্স</b> একসাথে চলে। কোনো বাড়তি ফ্রেমওয়ার্ক নয়, শুধু পরিষ্কার কোড আর যত্ন নেওয়া ডিটেইল।</p> <dl class="byline reveal"> <dt>Role</dt> <dd>Designer &amp; Developer</dd> <dt>Focus</dt> <dd>Interface · Front-end · Tooling</dd> <dt>Status</dt> <dd>Open to work</dd> </dl> </div> </div> </header><section id="work"> <div class="wrap"> <div class="sec-head"><span class="sec-num">01</span><h2>Selected Work</h2><span class="note">নির্বাচিত কিছু কাজ</span></div> <div class="work"> <article class="card reveal"> <span class="no">Project 01</span> <h3>Nebula Dashboard</h3> <p>একটি রিয়েল-টাইম অ্যানালিটিক্স ড্যাশবোর্ড — লাইটওয়েট, দ্রুত, আর ডেটা-ডেন্স লেআউটে স্পষ্ট।</p> <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Chart.js</span></div> </article> <article class="card reveal"> <span class="no">Project 02</span> <h3>Kite Commerce</h3> <p>ছোট ব্যবসার জন্য একটি স্টোরফ্রন্ট — মোবাইল-ফার্স্ট, দ্রুত লোড, সিম্পল চেকআউট।</p> <div class="chips"><span class="chip">UI/UX</span><span class="chip">JS</span><span class="chip">Responsive</span></div> </article> <article class="card reveal"> <span class="no">Project 03</span> <h3>Pulse Landing Kit</h3> <p>সিঙ্গেল-ফাইল ল্যান্ডিং টেমপ্লেট কিট — বিল্ড স্টেপ নেই, কপি করলেই ব্যবহারযোগ্য।</p> <div class="chips"><span class="chip">Template</span><span class="chip">Zero-build</span><span class="chip">A11y</span></div> </article> <article class="card reveal"> <span class="no">Project 04</span> <h3>Quiet Portfolio</h3> <p>একটি মিনিমাল পোর্টফোলিও সিস্টেম — টাইপোগ্রাফি-কেন্দ্রিক, রিডেবিলিটি প্রাধান্য পায়।</p> <div class="chips"><span class="chip">Design</span><span class="chip">CSS Grid</span><span class="chip">Motion</span></div> </article> </div> </div> </section><section id="skills"> <div class="wrap"> <div class="sec-head"><span class="sec-num">02</span><h2>Skills</h2><span class="note">যা দিয়ে কাজ করি</span></div> <div class="skill-grid"> <div class="skill reveal"> <h4>Interface Design</h4> <div class="lvl">Layout · Type · Color</div> <p>স্ক্রিনের প্রতিটা উপাদান কেন ওখানে আছে — সেটা নিয়ে ভাবি। টাইপোগ্রাফি আর স্পেসিং-ই আসল ডিজাইন।</p> <div class="bar"><i style="width:92%"></i></div> </div> <div class="skill reveal"> <h4>Front-end</h4> <div class="lvl">HTML · CSS · JS</div> <p>ফ্রেমওয়ার্ক ছাড়াই যতটা সম্ভব — সিমান্টিক মার্কআপ, আধুনিক CSS, আর দরকারমতো JS।</p> <div class="bar"><i style="width:88%"></i></div> </div> <div class="skill reveal"> <h4>Performance</h4> <div class="lvl">Speed · Core Web Vitals</div> <p>দ্রুত সাইট শুধু ভালো ফিল করে না, বেশি কনভার্টও করে। বাজেট ধরে ফিট করি।</p> <div class="bar"><i style="width:85%"></i></div> </div> <div class="skill reveal"> <h4>Accessibility</h4> <div class="lvl">WCAG · Semantics</div> <p>সবাই যেন ব্যবহার করতে পারে — কীবোর্ড, স্ক্রিন-রিডার, কম-কনট্রাস্ট ডিসপ্লে সবই ভাবা হয়।</p> <div class="bar"><i style="width:80%"></i></div> </div> </div> </div> </section><section id="about"> <div class="wrap"> <div class="sec-head"><span class="sec-num">03</span><h2>About</h2><span class="note">একটু পরিচয়</span></div> <div class="about"> <div class="reveal"> <p class="drop">আমি ডিজাইন আর কোড—দুটোকেই সমান গুরুত্ব দিই। আমার কাছে ভালো ইন্টারফেস মানে হলো <b>যেটা বুঝতে কষ্ট হয় না</b>, আর ভালো কোড মানে যেটা পরে নিজে পড়েও বুঝতে পারি।</p> <p>বেশিরভাগ কাজ করি ওয়েব নিয়ে — ল্যান্ডিং পেজ, ড্যাশবোর্ড, টুলিং আর ডিজাইন সিস্টেম। ছোট টিমের সাথে সরাসরি কাজ করতে ভালো লাগে, যেখানে আইডিয়া থেকে শিপিং পর্যন্ত পুরোটা দেখা যায়।</p> </div> <div class="timeline reveal"> <div class="tl-item"><span class="yr">2023 — এখন</span><b>Independent</b><p>ফ্রিল্যান্স ডিজাইন ও ফ্রন্ট-এন্ড — ক্লায়েন্টদের সাথে সরাসরি।</p></div> <div class="tl-item"><span class="yr">2020 — 2023</span><b>Product Studio</b><p>প্রোডাক্ট টিমে UI/UX ও ফ্রন্ট-এন্ড ইমপ্লিমেন্টেশন।</p></div> <div class="tl-item"><span class="yr">2018 — 2020</span><b>Self-taught</b><p>HTML/CSS/JS শেখা আর ছোট প্রজেক্ট বানানো থেকে শুরু।</p></div> </div> </div> </div> </section><section id="contact" class="contact"> <div class="wrap"> <div class="kicker reveal">Open to work</div> <h2 class="reveal">Let's build <em>something.</em></h2> <p class="reveal">কোনো আইডিয়া থাকলে বা কাজের কথা বলতে চাইলে একটা মেসেজ দাও — আমি সাধারণত ২৪ ঘণ্টার মধ্যে রিপ্লাই দিই।</p> <div class="cta reveal"> <a class="btn btn-primary" href="mailto:hello@example.com">Say Hello ▸</a> <a class="btn btn-ghost" href="#work">See Work</a> </div> </div> </section><footer> <div class="wrap foot"> <span>© 2026 — Portfolio</span> <span>Built with clean HTML · CSS · JS</span> </div> </footer><script> const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:0.12}); document.querySelectorAll('.reveal').forEach(el => io.observe(el)); </script></body> </html>
