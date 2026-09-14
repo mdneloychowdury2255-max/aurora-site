@@ -3,308 +3,275 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Aurora Studio</title>
+<meta name="description" content="Personal portfolio — designer & developer. Selected work, skills and contact." />
+<meta name="theme-color" content="#05030a" />
+<title>PORTFOLIO — Selected Work</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --bg:#070912;
-    --bg2:#0d1122;
-    --ink:#eef1ff;
-    --muted:#8b93b8;
-    --accent:#7c5cff;
-    --accent2:#22d3ee;
-    --accent3:#ff4d9d;
-    --card:rgba(255,255,255,.045);
-    --line:rgba(255,255,255,.09);
+    --bg:#05030a; --bg2:#0b0716; --ink:#eaf6ff; --muted:#7d8aa6;
+    --neon:#00f0ff; --neon2:#ff00a0; --neon3:#b026ff; --neon4:#39ff14;
+    --line:rgba(0,240,255,.16); --card:rgba(10,6,22,.62);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Outfit',system-ui,sans-serif;
-    overflow-x:hidden;
-    -webkit-font-smoothing:antialiased;
-  }
-  /* ---------- animated background ---------- */
-  .bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-  .orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;animation:float 18s ease-in-out infinite}
-  .orb.a{width:520px;height:520px;background:var(--accent);top:-160px;left:-120px}
-  .orb.b{width:460px;height:460px;background:var(--accent2);bottom:-180px;right:-100px;animation-delay:-6s}
-  .orb.c{width:380px;height:380px;background:var(--accent3);top:40%;left:55%;animation-delay:-11s;opacity:.32}
-  @keyframes float{
-    0%,100%{transform:translate3d(0,0,0) scale(1)}
-    33%{transform:translate3d(60px,-50px,0) scale(1.12)}
-    66%{transform:translate3d(-50px,40px,0) scale(.94)}
-  }
-  .grid-overlay{
-    position:fixed;inset:0;z-index:0;pointer-events:none;
-    background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
-                     linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-    background-size:64px 64px;
-    mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 20%,transparent 75%);
-    -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 20%,transparent 75%);
-  }
-  .wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 24px}
+  body{background:var(--bg);color:var(--ink);font-family:'Rajdhani',system-ui,sans-serif;font-weight:400;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
-  /* ---------- nav ---------- */
-  nav{
-    position:sticky;top:0;z-index:20;
-    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-    background:rgba(7,9,18,.62);
-    border-bottom:1px solid transparent;
-    transition:border-color .3s ease;
-  }
-  nav.scrolled{border-bottom-color:var(--line)}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:66px}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em;font-size:1.05rem}
-  .dot{width:11px;height:11px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 0 18px var(--accent)}
-  .nav-links{display:flex;gap:26px;font-size:.92rem;color:var(--muted)}
-  .nav-links a{color:inherit;text-decoration:none;transition:color .2s}
-  .nav-links a:hover{color:var(--ink)}
-  @media(max-width:640px){.nav-links{display:none}}
+  .fx{position:fixed;inset:0;z-index:0;pointer-events:none}
+  .fx::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(0,240,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,0,160,.05) 1px,transparent 1px);background-size:44px 44px;transform:perspective(420px) rotateX(58deg) scale(2.1);transform-origin:50% 100%;animation:grid 9s linear infinite;mask-image:radial-gradient(ellipse 70% 55% at 50% 100%,#000 8%,transparent 72%);-webkit-mask-image:radial-gradient(ellipse 70% 55% at 50% 100%,#000 8%,transparent 72%)}
+  @keyframes grid{to{background-position:0 44px,44px 0}}
+  .fx::after{content:'';position:absolute;inset:0;opacity:.5;background:repeating-linear-gradient(180deg,rgba(0,0,0,0) 0 2px,rgba(0,0,0,.35) 2px 3px);mix-blend-mode:multiply}
+  .glow{position:absolute;border-radius:50%;filter:blur(110px);opacity:.42}
+  .glow.a{width:560px;height:560px;background:var(--neon3);top:-200px;left:-140px}
+  .glow.b{width:520px;height:520px;background:var(--neon2);bottom:-220px;right:-160px;opacity:.3}
 
-  /* ---------- hero ---------- */
-  header{padding:104px 0 84px;text-align:center}
-  .pill{
-    display:inline-flex;align-items:center;gap:8px;
-    font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--muted);
-    border:1px solid var(--line);border-radius:999px;
-    padding:7px 16px;margin-bottom:26px;
-    background:var(--card);
-  }
-  .pulse{width:7px;height:7px;border-radius:50%;background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.7);animation:pulse 2s infinite}
-  @keyframes pulse{
-    0%{box-shadow:0 0 0 0 rgba(52,211,153,.7)}
-    70%{box-shadow:0 0 0 11px rgba(52,211,153,0)}
-    100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}
-  }
-  h1{
-    font-size:clamp(2.6rem,7vw,4.6rem);
-    font-weight:800;letter-spacing:-.045em;line-height:1.04;
-    margin-bottom:22px;
-  }
-  .grad{
-    background:linear-gradient(100deg,var(--accent) 0%,var(--accent2) 45%,var(--accent3) 100%);
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-    background-size:220% auto;animation:shine 7s linear infinite;
-  }
-  @keyframes shine{to{background-position:220% center}}
-  .lede{max-width:620px;margin:0 auto 38px;color:var(--muted);font-size:clamp(1rem,2.4vw,1.16rem);line-height:1.7;font-weight:300}
-  .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-  .btn{
-    display:inline-flex;align-items:center;gap:9px;
-    padding:14px 28px;border-radius:13px;
-    font-weight:600;font-size:.95rem;text-decoration:none;
-    transition:transform .22s cubic-bezier(.2,.8,.3,1),box-shadow .22s,border-color .22s;
-    border:1px solid transparent;cursor:pointer;
-  }
-  .btn-primary{
-    background:linear-gradient(120deg,var(--accent),var(--accent2));
-    color:#080a14;
-    box-shadow:0 10px 34px -10px var(--accent);
-  }
-  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 44px -12px var(--accent)}
-  .btn-ghost{border-color:var(--line);color:var(--ink);background:var(--card)}
-  .btn-ghost:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.24)}
+  .wrap{position:relative;z-index:2;max-width:1120px;margin:0 auto;padding:0 22px}
 
-  /* ---------- stats ---------- */
-  .stats{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-    gap:1px;background:var(--line);
-    border:1px solid var(--line);border-radius:18px;overflow:hidden;
-    margin-top:70px;
-  }
-  .stat{background:var(--bg2);padding:26px 20px;text-align:center}
-  .stat b{display:block;font-size:1.85rem;font-weight:800;letter-spacing:-.03em}
-  .stat span{font-size:.8rem;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
+  nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(5,3,10,.72);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
+  nav.scrolled{border-bottom-color:var(--line);box-shadow:0 0 34px -14px var(--neon)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:'Orbitron',sans-serif;font-weight:900;letter-spacing:.14em;font-size:.98rem;text-transform:uppercase}
+  .brand .mark{width:14px;height:14px;background:var(--neon);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);box-shadow:0 0 16px var(--neon),0 0 34px var(--neon);animation:blink 2.6s ease-in-out infinite}
+  @keyframes blink{50%{opacity:.45}}
+  .brand em{color:var(--neon);font-style:normal;text-shadow:0 0 10px var(--neon),0 0 26px var(--neon)}
+  .nav-links{display:flex;gap:26px;font-family:'Share Tech Mono',monospace;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase}
+  .nav-links a{color:var(--muted);text-decoration:none;transition:color .2s,text-shadow .2s}
+  .nav-links a:hover{color:var(--neon);text-shadow:0 0 12px var(--neon)}
+  @media(max-width:660px){.nav-links{display:none}}
 
-  /* ---------- sections ---------- */
-  section{padding:90px 0}
-  .sec-head{margin-bottom:46px}
-  .sec-tag{font-family:'JetBrains Mono',monospace;font-size:.76rem;color:var(--accent2);letter-spacing:.16em;text-transform:uppercase}
-  h2{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:800;letter-spacing:-.035em;margin-top:12px}
-  .sec-head p{color:var(--muted);margin-top:14px;max-width:540px;line-height:1.7;font-weight:300}
+  header{padding:92px 0 64px;position:relative}
+  .tag{display:inline-flex;align-items:center;gap:9px;font-family:'Share Tech Mono',monospace;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--neon);border:1px solid var(--line);border-radius:2px;padding:8px 15px;margin-bottom:28px;background:rgba(0,240,255,.05)}
+  .tag i{width:7px;height:7px;border-radius:50%;background:var(--neon4);box-shadow:0 0 12px var(--neon4);animation:blink 1.8s infinite}
+  h1{font-family:'Orbitron',sans-serif;font-weight:900;font-size:clamp(2.1rem,6.2vw,4rem);line-height:1.06;letter-spacing:.01em}
+  h1 .grad{background:linear-gradient(92deg,var(--neon),var(--neon3) 48%,var(--neon2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .role{font-family:'Share Tech Mono',monospace;color:var(--muted);margin-top:20px;font-size:.95rem;letter-spacing:.06em}
+  .role b{color:var(--ink)}
+  .lede{margin-top:22px;max-width:620px;color:#aebbd4;font-size:1.06rem;line-height:1.72}
+  .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+  .btn{font-family:'Share Tech Mono',monospace;font-size:.84rem;letter-spacing:.12em;text-transform:uppercase;padding:13px 24px;border-radius:2px;text-decoration:none;transition:transform .18s,box-shadow .18s,background .18s}
+  .btn-primary{background:var(--neon);color:#04121a;font-weight:700;box-shadow:0 0 26px -4px var(--neon)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 38px -2px var(--neon)}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink);background:rgba(0,240,255,.04)}
+  .btn-ghost:hover{border-color:var(--neon);box-shadow:0 0 22px -8px var(--neon)}
 
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:18px}
-  .card{
-    position:relative;padding:30px 26px;
-    background:var(--card);
-    border:1px solid var(--line);border-radius:18px;
-    overflow:hidden;
-    transition:transform .3s cubic-bezier(.2,.8,.3,1),border-color .3s,background .3s;
-  }
-  .card::before{
-    content:'';position:absolute;inset:0;opacity:0;transition:opacity .35s;
-    background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(124,92,255,.16),transparent 62%);
-    pointer-events:none;
-  }
-  .card:hover{transform:translateY(-6px);border-color:rgba(124,92,255,.42);background:rgba(255,255,255,.062)}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center;margin-top:56px}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:34px}}
+  .term{border:1px solid var(--line);border-radius:6px;background:rgba(6,3,14,.9);overflow:hidden;box-shadow:0 0 60px -22px var(--neon3)}
+  .term-bar{display:flex;align-items:center;gap:8px;padding:11px 14px;background:rgba(255,255,255,.03);border-bottom:1px solid var(--line)}
+  .dot{width:10px;height:10px;border-radius:50%}
+  .dot.r{background:#ff5f57}.dot.y{background:#febc2e}.dot.g{background:#28c840}
+  .term-title{margin-left:8px;font-family:'Share Tech Mono',monospace;font-size:.74rem;color:var(--muted);letter-spacing:.08em}
+  .term-body{padding:18px;font-family:'Share Tech Mono',monospace;font-size:.82rem;line-height:1.85;color:#9fe9ff}
+  .term-body .k{color:var(--neon2)}.term-body .s{color:var(--neon4)}.term-body .c{color:var(--muted)}
+  .cursor{display:inline-block;width:9px;height:15px;background:var(--neon);vertical-align:-2px;animation:blink 1s steps(2) infinite}
+
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px}
+  @media(max-width:660px){.stats{grid-template-columns:1fr}}
+  .stat{border:1px solid var(--line);border-radius:4px;padding:20px;background:var(--card);text-align:center}
+  .stat b{display:block;font-family:'Orbitron',sans-serif;font-size:1.9rem;color:var(--neon);text-shadow:0 0 18px var(--neon)}
+  .stat span{font-family:'Share Tech Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+
+  section{padding:78px 0;position:relative}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:40px;flex-wrap:wrap}
+  .sec-num{font-family:'Share Tech Mono',monospace;color:var(--neon);font-size:.82rem;letter-spacing:.2em}
+  h2{font-family:'Orbitron',sans-serif;font-weight:700;font-size:clamp(1.5rem,3.6vw,2.2rem);letter-spacing:.02em}
+  .sec-head p{color:var(--muted);font-family:'Share Tech Mono',monospace;font-size:.82rem}
+
+  .work{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+  .card{border:1px solid var(--line);border-radius:5px;background:var(--card);padding:26px;position:relative;overflow:hidden;transition:transform .22s,border-color .22s,box-shadow .22s}
+  .card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--neon),var(--neon3),var(--neon2));opacity:0;transition:opacity .22s}
+  .card:hover{transform:translateY(-4px);border-color:rgba(0,240,255,.4);box-shadow:0 20px 50px -28px var(--neon)}
   .card:hover::before{opacity:1}
-  .ico{
-    width:46px;height:46px;border-radius:13px;
-    display:grid;place-items:center;font-size:1.35rem;margin-bottom:20px;
-    background:linear-gradient(135deg,rgba(124,92,255,.22),rgba(34,211,238,.16));
-    border:1px solid rgba(124,92,255,.28);
-  }
-  .card h3{font-size:1.08rem;font-weight:600;margin-bottom:10px;letter-spacing:-.015em}
-  .card p{color:var(--muted);font-size:.92rem;line-height:1.68;font-weight:300}
+  .card .no{font-family:'Share Tech Mono',monospace;font-size:.72rem;color:var(--neon);letter-spacing:.18em}
+  .card h3{font-family:'Orbitron',sans-serif;font-size:1.12rem;margin:12px 0 10px;letter-spacing:.03em}
+  .card p{color:#a3b1c9;line-height:1.68;font-size:.98rem}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .chip{font-family:'Share Tech Mono',monospace;font-size:.7rem;letter-spacing:.08em;color:var(--neon);border:1px solid var(--line);border-radius:2px;padding:4px 9px;background:rgba(0,240,255,.05)}
 
-  /* ---------- marquee ---------- */
-  .marquee{
-    overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-    padding:22px 0;background:rgba(255,255,255,.02);
-    mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
-    -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
-  }
-  .track{display:flex;gap:52px;width:max-content;animation:scroll 34s linear infinite}
-  .track span{font-family:'JetBrains Mono',monospace;font-size:.92rem;color:var(--muted);white-space:nowrap}
-  @keyframes scroll{to{transform:translateX(-50%)}}
+  .skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+  .skill{border:1px solid var(--line);border-radius:5px;background:var(--card);padding:22px}
+  .skill h4{font-family:'Orbitron',sans-serif;font-size:.92rem;letter-spacing:.06em;margin-bottom:14px;color:var(--neon)}
+  .bar{height:5px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;margin:10px 0 6px}
+  .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--neon),var(--neon3));box-shadow:0 0 14px -2px var(--neon)}
+  .skill small{font-family:'Share Tech Mono',monospace;font-size:.72rem;color:var(--muted);display:flex;justify-content:space-between}
 
-  /* ---------- footer ---------- */
-  footer{border-top:1px solid var(--line);padding:44px 0;text-align:center}
-  footer p{color:var(--muted);font-size:.86rem;font-weight:300}
-  footer .brand{justify-content:center;margin-bottom:14px}
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+  @media(max-width:860px){.about{grid-template-columns:1fr;gap:28px}}
+  .about p{color:#aebbd4;line-height:1.82;font-size:1.02rem;margin-bottom:16px}
+  .about p b{color:var(--ink)}
+  .timeline{border-left:1px solid var(--line);padding-left:22px;display:flex;flex-direction:column;gap:22px}
+  .tl-item{position:relative}
+  .tl-item::before{content:'';position:absolute;left:-28px;top:6px;width:9px;height:9px;border-radius:50%;background:var(--neon);box-shadow:0 0 14px var(--neon)}
+  .tl-item b{font-family:'Orbitron',sans-serif;font-size:.88rem;letter-spacing:.04em;display:block}
+  .tl-item span{font-family:'Share Tech Mono',monospace;font-size:.74rem;color:var(--neon2);letter-spacing:.08em}
+  .tl-item p{color:var(--muted);font-size:.92rem;line-height:1.6;margin-top:6px}
 
-  /* ---------- reveal ---------- */
-  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.8,.3,1),transform .7s cubic-bezier(.2,.8,.3,1)}
+  .contact{text-align:center;border:1px solid var(--line);border-radius:6px;background:var(--card);padding:52px 24px;position:relative;overflow:hidden}
+  .contact::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 0%,rgba(0,240,255,.12),transparent 70%);pointer-events:none}
+  .contact h2{margin-bottom:16px}
+  .contact p{color:#aebbd4;max-width:520px;margin:0 auto 30px;line-height:1.74}
+  .contact .cta{justify-content:center}
+
+  footer{border-top:1px solid var(--line);padding:34px 0;margin-top:40px}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-family:'Share Tech Mono',monospace;font-size:.76rem;color:var(--muted);letter-spacing:.06em}
+  .foot a{color:var(--muted);text-decoration:none;transition:color .2s}
+  .foot a:hover{color:var(--neon)}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
   .reveal.in{opacity:1;transform:none}
-
-  @media(prefers-reduced-motion:reduce){
-    *{animation:none!important;transition:none!important}
-    .reveal{opacity:1;transform:none}
-  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
-
-<div class="bg">
-  <div class="orb a"></div>
-  <div class="orb b"></div>
-  <div class="orb c"></div>
-</div>
-<div class="grid-overlay"></div>
+<div class="fx"><div class="glow a"></div><div class="glow b"></div></div>
 
 <nav id="nav">
   <div class="wrap nav-inner">
-    <div class="brand"><span class="dot"></span> Aurora</div>
+    <div class="brand"><span class="mark"></span>PORT<em>FOLIO</em></div>
     <div class="nav-links">
-      <a href="#features">Features</a>
-      <a href="#stack">Stack</a>
-      <a href="#start">Start</a>
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
     </div>
   </div>
 </nav>
 
-<div class="wrap">
-  <header>
-    <div class="pill reveal"><span class="pulse"></span> Live on GitHub Pages</div>
-    <h1 class="reveal">Build something<br /><span class="grad">quietly brilliant.</span></h1>
-    <p class="lede reveal">
-      একটি আধুনিক, দ্রুত এবং সম্পূর্ণ রেসপন্সিভ ওয়েবসাইট — কোনো বিল্ড স্টেপ নেই,
-      কোনো ফ্রেমওয়ার্ক নেই। শুধু পরিষ্কার HTML, CSS আর একটু জাদু। Now with a fresh coat.
-    </p>
+<header id="top">
+  <div class="wrap">
+    <span class="tag"><i></i> Available for select projects — 2026</span>
+    <h1 class="reveal">Design. Build.<br /><span class="grad">Ship quietly brilliant.</span></h1>
+    <p class="role">Independent <b>designer & developer</b> — interface, front-end, tooling.</p>
+    <p class="lede reveal">আমি ইন্টারফেস ডিজাইন আর ফ্রন্ট-এন্ড ডেভেলপমেন্ট নিয়ে কাজ করি — যেখানে সৌন্দর্য আর পারফরম্যান্স একসাথে চলে। কোনো বাড়তি ফ্রেমওয়ার্ক নয়, শুধু পরিষ্কার কোড আর যত্ন নেওয়া ডিটেইল।</p>
     <div class="cta reveal">
-      <a class="btn btn-primary" href="#features">Explore ▸ now</a>
-      <a class="btn btn-ghost" href="#start">How it works</a>
+      <a class="btn btn-primary" href="#work">View Work ▸</a>
+      <a class="btn btn-ghost" href="#contact">Get in Touch</a>
     </div>
 
-    <div class="stats reveal">
-      <div class="stat"><b>0ms</b><span>Build step</span></div>
-      <div class="stat"><b>100%</b><span>Responsive</span></div>
-      <div class="stat"><b>1</b><span>Single file</span></div>
-      <div class="stat"><b>A+</b><span>Lighthouse</span></div>
+    <div class="hero-grid">
+      <div class="term reveal">
+        <div class="term-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="term-title">~/portfolio — zsh</span></div>
+        <div class="term-body">
+          <div><span class="c">$</span> whoami</div>
+          <div><span class="s">designer · front-end dev</span></div>
+          <div><span class="c">$</span> ls skills/</div>
+          <div><span class="k">ui</span> <span class="k">ux</span> <span class="k">html</span> <span class="k">css</span> <span class="k">js</span> <span class="k">a11y</span></div>
+          <div><span class="c">$</span> cat status.txt</div>
+          <div><span class="s">open to work</span> <span class="cursor"></span></div>
+        </div>
+      </div>
+      <div class="stats reveal">
+        <div class="stat"><b>6+</b><span>Years</span></div>
+        <div class="stat"><b>40+</b><span>Projects</span></div>
+        <div class="stat"><b>100</b><span>Lighthouse</span></div>
+      </div>
     </div>
-  </header>
-</div>
-
-<div class="marquee">
-  <div class="track">
-    <span>◆ HTML5</span><span>◆ CSS3</span><span>◆ Vanilla JS</span><span>◆ Responsive</span><span>◆ Dark Mode</span><span>◆ Glassmorphism</span><span>◆ GPU Animated</span><span>◆ Accessible</span>
-    <span>◆ HTML5</span><span>◆ CSS3</span><span>◆ Vanilla JS</span><span>◆ Responsive</span><span>◆ Dark Mode</span><span>◆ Glassmorphism</span><span>◆ GPU Animated</span><span>◆ Accessible</span>
   </div>
-</div>
+</header>
 
-<div class="wrap">
-  <section id="features">
-    <div class="sec-head reveal">
-      <div class="sec-tag">// what's inside</div>
-      <h2>সবকিছু যা দরকার, কিছুই যা নয়</h2>
-      <p>হালকা, দ্রুত আর সুন্দর — এই তিনটাই মূল লক্ষ্য। কোনো অপ্রয়োজনীয় ডিপেন্ডেন্সি নেই।</p>
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01 /</span><h2>Selected Work</h2><p>নির্বাচিত কিছু কাজ</p></div>
+    <div class="work">
+      <article class="card reveal">
+        <span class="no">PROJECT-01</span>
+        <h3>Nebula Dashboard</h3>
+        <p>একটি রিয়েল-টাইম অ্যানালিটিক্স ড্যাশবোর্ড — লাইটওয়েট, দ্রুত, আর ডেটা-ডেন্স লেআউটে স্পষ্ট।</p>
+        <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Chart.js</span></div>
+      </article>
+      <article class="card reveal">
+        <span class="no">PROJECT-02</span>
+        <h3>Kite Commerce</h3>
+        <p>ছোট ব্যবসার জন্য একটি স্টোরফ্রন্ট — মোবাইল-ফার্স্ট, দ্রুত লোড, সিম্পল চেকআউট।</p>
+        <div class="chips"><span class="chip">UI/UX</span><span class="chip">JS</span><span class="chip">Responsive</span></div>
+      </article>
+      <article class="card reveal">
+        <span class="no">PROJECT-03</span>
+        <h3>Pulse Landing Kit</h3>
+        <p>সিঙ্গেল-ফাইল ল্যান্ডিং টেমপ্লেট কিট — বিল্ড স্টেপ নেই, কপি করলেই ব্যবহারযোগ্য।</p>
+        <div class="chips"><span class="chip">Template</span><span class="chip">Zero-build</span><span class="chip">A11y</span></div>
+      </article>
+      <article class="card reveal">
+        <span class="no">PROJECT-04</span>
+        <h3>Quiet Portfolio</h3>
+        <p>একটি মিনিমাল পোর্টফোলিও সিস্টেম — টাইপোগ্রাফি-কেন্দ্রিক, রিডেবিলিটি প্রাধান্য পায়।</p>
+        <div class="chips"><span class="chip">Design</span><span class="chip">CSS Grid</span><span class="chip">Motion</span></div>
+      </article>
     </div>
-    <div class="cards">
-      <div class="card reveal"><div class="ico">⚡</div><h3>Instant Load</h3><p>একটাই HTML ফাইল। কোনো বান্ডলার, কোনো node_modules, কোনো অপেক্ষা নেই।</p></div>
-      <div class="card reveal"><div class="ico">🎨</div><h3>Glass &amp; Glow</h3><p>Glassmorphism কার্ড, অরোরা গ্রেডিয়েন্ট আর নরম গ্লো — ডার্ক থিমে চোখের আরাম।</p></div>
-      <div class="card reveal"><div class="ico">📱</div><h3>Fully Responsive</h3><p>মোবাইল থেকে ডেস্কটপ — প্রতিটি ব্রেকপয়েন্টে লেআউট নিজেকে মানিয়ে নেয়।</p></div>
-      <div class="card reveal"><div class="ico">✨</div><h3>Scroll Reveal</h3><p>IntersectionObserver দিয়ে সেকশনগুলো স্ক্রলে ধীরে ধীরে ফুটে ওঠে।</p></div>
-      <div class="card reveal"><div class="ico">🖱️</div><h3>Cursor Glow</h3><p>মাউস যেদিকে যায়, কার্ডের ভেতরে সেইদিকেই আলো অনুসরণ করে।</p></div>
-      <div class="card reveal"><div class="ico">♿</div><h3>Reduced Motion</h3><p>যারা অ্যানিমেশন পছন্দ করেন না, তাদের জন্য prefers-reduced-motion সাপোর্ট।</p></div>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <section id="stack">
-    <div class="sec-head reveal">
-      <div class="sec-tag">// the stack</div>
-      <h2>ছোট, কিন্তু শক্ত</h2>
-      <p>যা ব্যবহার করা হয়েছে তা নিয়েই গর্ব — কোনো বাড়তি ভার নেই।</p>
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02 /</span><h2>Skills</h2><p>যা দিয়ে কাজ করি</p></div>
+    <div class="skill-grid">
+      <div class="skill reveal">
+        <h4>Interface Design</h4>
+        <div class="bar"><i style="width:92%"></i></div><small><span>Layout · Type · Color</span><span>92%</span></small>
+      </div>
+      <div class="skill reveal">
+        <h4>Front-end</h4>
+        <div class="bar"><i style="width:88%"></i></div><small><span>HTML · CSS · JS</span><span>88%</span></small>
+      </div>
+      <div class="skill reveal">
+        <h4>Performance</h4>
+        <div class="bar"><i style="width:85%"></i></div><small><span>Speed · Core Web Vitals</span><span>85%</span></small>
+      </div>
+      <div class="skill reveal">
+        <h4>Accessibility</h4>
+        <div class="bar"><i style="width:80%"></i></div><small><span>WCAG · Semantics</span><span>80%</span></small>
+      </div>
     </div>
-    <div class="cards">
-      <div class="card reveal"><div class="ico">🧱</div><h3>Semantic HTML5</h3><p>পরিষ্কার স্ট্রাকচার, সঠিক ট্যাগ — SEO আর অ্যাক্সেসিবিলিটি দুটোই ভালো।</p></div>
-      <div class="card reveal"><div class="ico">🎛️</div><h3>Modern CSS</h3><p>CSS variables, clamp(), grid, backdrop-filter — আধুনিক সব ফিচার।</p></div>
-      <div class="card reveal"><div class="ico">🪶</div><h3>Vanilla JS</h3><p>মাত্র কয়েক লাইন স্ক্রিপ্ট — নেভবার, রিভিল আর কার্সর গ্লো-র জন্য।</p></div>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <section id="start">
-    <div class="sec-head reveal">
-      <div class="sec-tag">// deploy</div>
-      <h2>GitHub Pages-এ লাইভ</h2>
-      <p>এই সাইটটি GitHub Pages থেকে সরাসরি সার্ভ হচ্ছে — কোনো হোস্টিং খরচ নেই।</p>
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03 /</span><h2>About</h2><p>একটু পরিচয়</p></div>
+    <div class="about">
+      <div class="reveal">
+        <p>আমি ডিজাইন আর কোড—দুটোকেই সমান গুরুত্ব দিই। আমার কাছে ভালো ইন্টারফেস মানে হলো <b>যেটা বুঝতে কষ্ট হয় না</b>, আর ভালো কোড মানে যেটা পরে নিজে পড়েও বুঝতে পারি।</p>
+        <p>বেশিরভাগ কাজ করি ওয়েব নিয়ে — ল্যান্ডিং পেজ, ড্যাশবোর্ড, টুলিং আর ডিজাইন সিস্টেম। ছোট টিমের সাথে সরাসরি কাজ করতে ভালো লাগে, যেখানে আইডিয়া থেকে শিপিং পর্যন্ত পুরোটা দেখা যায়।</p>
+      </div>
+      <div class="timeline reveal">
+        <div class="tl-item"><span>2023 — এখন</span><b>Independent</b><p>ফ্রিল্যান্স ডিজাইন ও ফ্রন্ট-এন্ড — ক্লায়েন্টদের সাথে সরাসরি।</p></div>
+        <div class="tl-item"><span>2020 — 2023</span><b>Product Studio</b><p>প্রোডাক্ট টিমে UI/UX ও ফ্রন্ট-এন্ড ইমপ্লিমেন্টেশন।</p></div>
+        <div class="tl-item"><span>2018 — 2020</span><b>Self-taught</b><p>HTML/CSS/JS শেখা আর ছোট প্রজেক্ট বানানো থেকে শুরু।</p></div>
+      </div>
     </div>
-    <div class="cards">
-      <div class="card reveal"><div class="ico">1️⃣</div><h3>Repo</h3><p>সোর্স কোড GitHub রিপোজিটরিতে আছে, main ব্রাঞ্চে।</p></div>
-      <div class="card reveal"><div class="ico">2️⃣</div><h3>Pages</h3><p>Settings → Pages → main ব্রাঞ্চ সিলেক্ট করা হয়েছে।</p></div>
-      <div class="card reveal"><div class="ico">3️⃣</div><h3>Live</h3><p>কয়েক সেকেন্ডেই পাবলিক URL-এ সাইট লাইভ হয়ে যায়।</p></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact reveal">
+      <span class="tag"><i></i> Open to work</span>
+      <h2>Let's build something.</h2>
+      <p>কোনো আইডিয়া থাকলে বা কাজের কথা বলতে চাইলে একটা মেসেজ দাও — আমি সাধারণত ২৪ ঘণ্টার মধ্যে রিপ্লাই দিই।</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="mailto:hello@example.com">Say Hello ▸</a>
+        <a class="btn btn-ghost" href="#work">See Work</a>
+      </div>
     </div>
-  </section>
-</div>
+  </div>
+</section>
 
 <footer>
-  <div class="wrap">
-    <div class="brand"><span class="dot"></span> Aurora</div>
-    <p>© 2026 · Built with pure HTML &amp; CSS · Hosted on GitHub Pages</p>
+  <div class="wrap foot">
+    <span>© 2026 — Portfolio</span>
+    <span>Built with clean HTML · CSS · JS</span>
   </div>
 </footer>
 
 <script>
-  // nav border on scroll
   const nav = document.getElementById('nav');
-  addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', scrollY > 8);
-  }, { passive: true });
-
-  // scroll reveal
+  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 12), {passive:true});
   const io = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('in'), i * 70);
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12});
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  // cursor glow on cards
-  document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('pointermove', (e) => {
-      const r = card.getBoundingClientRect();
-      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
-    });
-  });
 </script>
 </body>
 </html>
