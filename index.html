@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="NEONFORGE — a fast, single-file product landing page. No build step, no frameworks." />
-<title>NEONFORGE</title>
+<meta name="description" content="NEONFORGE — request early access to the fastest single-file product landing kit. No build step, no frameworks, just neon." />
+<meta name="theme-color" content="#05030a" />
+<title>NEONFORGE — Request Early Access</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
@@ -119,6 +120,33 @@
   .btn:hover{background:var(--neon);color:#05030a;box-shadow:0 0 30px var(--neon);transform:translateY(-2px)}
   .btn.alt{border-color:var(--neon2);color:var(--neon2)}
   .btn.alt:hover{background:var(--neon2);color:#05030a;box-shadow:0 0 30px var(--neon2)}
+  .btn{flex:0 0 auto}
+  .invite{max-width:620px;margin:0 auto;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+  .invite .field{flex:1 1 300px;display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:rgba(4,2,10,.7);padding:0 16px;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
+  .invite .field:focus-within{border-color:var(--neon);box-shadow:0 0 26px -8px var(--neon)}
+  .invite input{flex:1;background:transparent;border:0;outline:0;color:var(--ink);font-family:'Share Tech Mono',monospace;font-size:.86rem;padding:15px 0;letter-spacing:.04em;min-width:0}
+  .invite input::placeholder{color:#4d5a73}
+  .invite .field>span{color:var(--neon);font-family:'Share Tech Mono',monospace}
+  .note{margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:.72rem;color:var(--muted);letter-spacing:.08em}
+  .note b{color:var(--neon4);font-weight:400}
+  .ok{margin-top:12px;font-family:'Share Tech Mono',monospace;font-size:.8rem;color:var(--neon4);min-height:1.2em;letter-spacing:.06em}
+  .bento{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+  .bento .card{padding:30px 26px}
+  .b-wide{grid-column:span 4}
+  .b-two{grid-column:span 2}
+  @media(max-width:860px){.bento{grid-template-columns:1fr}.b-wide,.b-two{grid-column:auto}}
+  .faq{max-width:760px;margin:0 auto;display:grid;gap:12px}
+  details{border:1px solid var(--line);background:var(--card);padding:0 22px;transition:border-color .25s,box-shadow .25s}
+  details[open]{border-color:var(--neon);box-shadow:0 0 34px -14px var(--neon)}
+  summary{cursor:pointer;list-style:none;padding:20px 0;font-family:'Orbitron',sans-serif;font-size:.86rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:'+';color:var(--neon);font-family:'Share Tech Mono',monospace;font-size:1.1rem}
+  details[open] summary::after{content:'-';color:var(--neon2)}
+  details p{color:var(--muted);font-size:.92rem;line-height:1.75;font-weight:300;padding:0 0 20px}
+  .final{margin:0 auto;max-width:900px;text-align:center;border:1px solid var(--line);background:linear-gradient(180deg,rgba(0,240,255,.06),rgba(176,38,255,.05));clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px);padding:64px 28px;box-shadow:0 0 80px -34px var(--neon)}
+  .final h2{margin-bottom:14px}
+  .final p{color:var(--muted);max-width:520px;margin:0 auto 30px;line-height:1.75;font-weight:300}
+  section,header{scroll-margin-top:80px}
 
   /* ---------- terminal ---------- */
   .term{
@@ -207,31 +235,35 @@
     <div class="nav-links">
       <a href="#modules">Modules</a>
       <a href="#stack">Stack</a>
+      <a href="#faq">FAQ</a>
       <a href="#deploy">Deploy</a>
+      <a href="#access">Get access</a>
     </div>
   </div>
 </nav>
 
 <div class="wrap">
-  <header>
+  <header id="top">
     <div class="tag reveal"><i></i> System online · GitHub Pages</div>
     <h1 class="reveal"><span class="glitch" data-t="Forge the">Forge the</span><br /><span class="neon">Neon</span> <span class="neon-p">Future</span></h1>
     <p class="lede reveal">
       একটি আধুনিক, দ্রুত আর সম্পূর্ণ রেসপন্সিভ প্রোডাক্ট ল্যান্ডিং পেজ — <b>কোনো বিল্ড স্টেপ নেই</b>,
       কোনো ফ্রেমওয়ার্ক নেই। শুধু পরিষ্কার HTML, CSS আর একটু নিয়ন জাদু।
     </p>
-    <div class="cta reveal">
-      <a class="btn" href="#modules">Initialize ▸</a>
-      <a class="btn alt" href="#deploy">Read docs</a>
-    </div>
+    <form class="invite reveal" id="inviteForm" novalidate>
+      <label class="field"><span>@</span><input id="email" type="email" placeholder="you@domain.com" autocomplete="email" required /></label>
+      <button class="btn" type="submit">Request invite ▸</button>
+    </form>
+    <div class="ok" id="ok" role="status" aria-live="polite"></div>
+    <div class="note reveal">No spam · <b>1-click</b> unsubscribe · early access free forever</div>
 
     <div class="term reveal">
       <div class="term-bar"><span></span><span></span><span></span><b>neonforge — bash</b></div>
-      <pre><span class="p">$</span> neonforge deploy --static
-<span class="c">// scanning project...</span>
+      <pre><span class="p">$</span> neonforge invite --claim
+<span class="c">// verifying invite slot...</span>
+  <span class="k">✓</span> slot reserved · no credit card
   <span class="k">✓</span> 1 file · 0 dependencies · 0 build steps
   <span class="k">✓</span> lighthouse 100 / 100 / 100 / 100
-  <span class="k">✓</span> pushed to main → pages live
 <span class="p">$</span> <span class="cursor"></span></pre>
     </div>
 
@@ -246,8 +278,8 @@
 
 <div class="marquee">
   <div class="track">
-    <span><b>◆</b> HTML5</span><span><b>◆</b> CSS3</span><span><b>◆</b> Vanilla JS</span><span><b>◆</b> Responsive</span><span><b>◆</b> Neon Glow</span><span><b>◆</b> Cyberpunk UI</span><span><b>◆</b> GPU Animated</span><span><b>◆</b> Accessible</span>
-    <span><b>◆</b> HTML5</span><span><b>◆</b> CSS3</span><span><b>◆</b> Vanilla JS</span><span><b>◆</b> Responsive</span><span><b>◆</b> Neon Glow</span><span><b>◆</b> Cyberpunk UI</span><span><b>◆</b> GPU Animated</span><span><b>◆</b> Accessible</span>
+    <span><b>◆</b> HTML5</span><span><b>◆</b> CSS3</span><span><b>◆</b> Vanilla JS</span><span><b>◆</b> Responsive</span><span><b>◆</b> Neon Glow</span><span><b>◆</b> Cyberpunk UI</span><span><b>◆</b> GPU Animated</span><span><b>◆</b> Accessible</span><span><b>◆</b> Invite Beta</span><span><b>◆</b> Zero Deps</span>
+    <span><b>◆</b> HTML5</span><span><b>◆</b> CSS3</span><span><b>◆</b> Vanilla JS</span><span><b>◆</b> Responsive</span><span><b>◆</b> Neon Glow</span><span><b>◆</b> Cyberpunk UI</span><span><b>◆</b> GPU Animated</span><span><b>◆</b> Accessible</span><span><b>◆</b> Invite Beta</span><span><b>◆</b> Zero Deps</span>
   </div>
 </div>
 
@@ -274,10 +306,25 @@
       <h2>ছোট, কিন্তু শক্ত</h2>
       <p>যা ব্যবহার করা হয়েছে তা নিয়েই গর্ব — কোনো বাড়তি ভার নেই।</p>
     </div>
-    <div class="cards">
-      <div class="card reveal"><span class="num">01</span><div class="ico">🧱</div><h3>Semantic HTML5</h3><p>পরিষ্কার স্ট্রাকচার, সঠিক ট্যাগ — SEO আর অ্যাক্সেসিবিলিটি দুটোই ভালো।</p></div>
-      <div class="card reveal"><span class="num">02</span><div class="ico">🎨</div><h3>Modern CSS</h3><p>CSS variables, clamp(), grid, clip-path, backdrop-filter — আধুনিক সব ফিচার।</p></div>
-      <div class="card reveal"><span class="num">03</span><div class="ico">🪶</div><h3>Vanilla JS</h3><p>মাত্র কয়েক লাইন স্ক্রিপ্ট — নেভবার, রিভিল আর টিল্ট ইফেক্টের জন্য।</p></div>
+    <div class="bento">
+      <div class="card b-wide reveal"><span class="num">01</span><div class="ico">🧱</div><h3>Semantic HTML5</h3><p>পরিষ্কার স্ট্রাকচার, সঠিক ট্যাগ — SEO আর অ্যাক্সেসিবিলিটি দুটোই ভালো, স্ক্রিন-রিডারেও পরিষ্কার পড়া যায়।</p></div>
+      <div class="card b-two reveal"><span class="num">02</span><div class="ico">🎨</div><h3>Modern CSS</h3><p>variables, clamp(), grid, clip-path, backdrop-filter — আধুনিক সব ফিচার একসাথে।</p></div>
+      <div class="card b-two reveal"><span class="num">03</span><div class="ico">🪶</div><h3>Vanilla JS</h3><p>কয়েক লাইন স্ক্রিপ্ট — নেভবার, রিভিল, ইনভাইট আর টিল্ট ইফেক্টের জন্য।</p></div>
+      <div class="card b-wide reveal"><span class="num">04</span><div class="ico">🚀</div><h3>Pages Ready</h3><p>GitHub Pages-এ সরাসরি পুশ করলেই লাইভ — কোনো হোস্টিং খরচ বা সেটআপ নেই, HTTPS সহ।</p></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="sec-head reveal">
+      <div class="sec-tag">// faq</div>
+      <h2>সাধারণ প্রশ্ন</h2>
+      <p>ইনভাইট আর অ্যাক্সেস নিয়ে যা জিজ্ঞেস করা হয়।</p>
+    </div>
+    <div class="faq">
+      <details class="reveal" open><summary>ইনভাইট কি সত্যিই ফ্রি?</summary><p>হ্যাঁ — early access সম্পূর্ণ ফ্রি, কোনো ক্রেডিট কার্ড লাগে না। ইমেইল দিলেই স্লট রিজার্ভ হয়ে যায়।</p></details>
+      <details class="reveal"><summary>কতক্ষণে অ্যাক্সেস পাব?</summary><p>ইনভাইট ধাপে ধাপে ছাড়া হয় — সাধারণত ২৪–৪৮ ঘণ্টার মধ্যে লিংক চলে যায় ইনবক্সে।</p></details>
+      <details class="reveal"><summary>ফ্রেমওয়ার্ক ছাড়া চলে?</summary><p>সম্পূর্ণ। একটাই HTML ফাইল — কোনো build step, কোনো node_modules নেই।</p></details>
+      <details class="reveal"><summary>হোস্টিং খরচ কত?</summary><p>শূন্য। GitHub Pages-এ main ব্রাঞ্চ থেকে সরাসরি HTTPS সহ সার্ভ হয়।</p></details>
     </div>
   </section>
 
@@ -291,6 +338,18 @@
       <div class="card reveal"><span class="num">1</span><div class="ico">📦</div><h3>Repo</h3><p>সোর্স কোড GitHub রিপোজিটরিতে আছে, main ব্রাঞ্চে।</p></div>
       <div class="card reveal"><span class="num">2</span><div class="ico">⚙️</div><h3>Pages</h3><p>Settings → Pages → main ব্রাঞ্চ সিলেক্ট করা হয়েছে।</p></div>
       <div class="card reveal"><span class="num">3</span><div class="ico">🚀</div><h3>Live</h3><p>কয়েক সেকেন্ডেই পাবলিক URL-এ সাইট লাইভ হয়ে যায়।</p></div>
+    </div>
+  </section>
+
+  <section id="access">
+    <div class="final reveal">
+      <div class="sec-tag">// access</div>
+      <h2>আজই <span class="neon">ইনভাইট</span> নাও</h2>
+      <p>প্রাইভেট বিটা চলছে — স্লট সীমিত। ইমেইল দাও, একটা জায়গা রিজার্ভ আর লিংক চলে যাবে ইনবক্সে।</p>
+      <div class="cta">
+        <a class="btn" href="#top">Claim your invite ▸</a>
+        <a class="btn alt" href="#faq">Read FAQ</a>
+      </div>
     </div>
   </section>
 </div>
@@ -327,6 +386,21 @@
       card.style.transform = `translateY(-6px) rotateX(${(-y * 6).toFixed(2)}deg) rotateY(${(x * 6).toFixed(2)}deg)`;
     });
     card.addEventListener('pointerleave', () => { card.style.transform = ''; });
+  });
+
+  const form = document.getElementById('inviteForm');
+  const okEl = document.getElementById('ok');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const v = document.getElementById('email').value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) {
+      okEl.style.color = 'var(--neon2)';
+      okEl.textContent = '✗ সঠিক ইমেইল দাও, তারপর স্লট লক হবে';
+      return;
+    }
+    okEl.style.color = 'var(--neon4)';
+    okEl.textContent = '✓ ইনভাইট রিজার্ভড — তোমার স্লট লক হয়েছে!';
+    form.reset();
   });
 </script>
 </body>
