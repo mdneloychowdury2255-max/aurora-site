@@ -3,191 +3,265 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="NORTHLIGHT — a field guide to light, cold air and quiet code." />
-<title>Northlight</title>
+<meta name="description" content="GLASSHOUSE — a small studio for light, weather and interfaces that keep working at 3am." />
+<title>Glasshouse</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,600;9..144,900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --bg:#07090c;
-    --ink:#e9f1f5;
-    --muted:#7d8c98;
-    --ice:#8fe3ff;
-    --moss:#5fe0b0;
-    --dusk:#9a8cff;
-    --card:rgba(255,255,255,.04);
-    --line:rgba(255,255,255,.10);
+    --bg:#05070a;
+    --panel:#0b1016;
+    --ink:#eef4f2;
+    --muted:#78878d;
+    --lime:#b8f27c;
+    --coral:#ff7a6b;
+    --amber:#ffc861;
+    --line:rgba(255,255,255,.09);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--ink);font-family:'Outfit',system-ui,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-  .aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-  .aurora i{position:absolute;display:block;border-radius:50%;filter:blur(80px);opacity:.42;animation:drift 22s ease-in-out infinite}
-  .aurora i:nth-child(1){width:540px;height:340px;background:var(--ice);top:-90px;left:-120px}
-  .aurora i:nth-child(2){width:460px;height:300px;background:var(--moss);top:18%;right:-140px;animation-delay:-7s}
-  .aurora i:nth-child(3){width:420px;height:280px;background:var(--dusk);bottom:-80px;left:28%;animation-delay:-13s}
-  @keyframes drift{
+  body{background:var(--bg);color:var(--ink);font-family:'Fraunces',Georgia,serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+  .glow{position:fixed;inset:0;z-index:0;pointer-events:none}
+  .glow i{position:absolute;display:block;border-radius:50%;filter:blur(90px);opacity:.34;animation:sway 26s ease-in-out infinite}
+  .glow i:nth-child(1){width:520px;height:380px;background:var(--lime);top:-110px;right:8%}
+  .glow i:nth-child(2){width:440px;height:320px;background:var(--coral);bottom:-90px;left:-100px;animation-delay:-9s}
+  .glow i:nth-child(3){width:380px;height:300px;background:var(--amber);top:42%;left:52%;animation-delay:-17s}
+  @keyframes sway{
     0%,100%{transform:translate3d(0,0,0) scale(1)}
-    40%{transform:translate3d(40px,-34px,0) scale(1.1)}
-    70%{transform:translate3d(-34px,26px,0) scale(.95)}
+    45%{transform:translate3d(-38px,30px,0) scale(1.12)}
+    75%{transform:translate3d(30px,-24px,0) scale(.94)}
   }
-  .wrap{position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:0 22px}
-  nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(7,9,12,.66);border-bottom:1px solid var(--line)}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
-  .mark{font-weight:800;letter-spacing:.2em;font-size:12px;text-transform:uppercase}
-  .mark b{color:var(--ice)}
-  nav a{color:var(--muted);text-decoration:none;font-size:13px;margin-left:18px;transition:color .2s}
-  nav a:hover{color:var(--ink)}
-  header{padding:100px 0 80px}
-  .tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.34em;color:var(--ice);text-transform:uppercase}
-  h1{font-size:clamp(2.2rem,7.4vw,4.6rem);font-weight:800;line-height:1.03;letter-spacing:-.035em;margin:16px 0 18px;max-width:16ch}
-  h1 em{font-style:normal;color:var(--moss)}
-  header p{color:var(--muted);max-width:52ch;font-size:1.05rem;line-height:1.75}
-  .cta{display:inline-block;margin-top:30px;padding:12px 26px;border:1px solid var(--line);border-radius:2px;color:var(--ink);text-decoration:none;font-size:13px;letter-spacing:.06em;text-transform:uppercase;background:var(--card);transition:border-color .25s,transform .25s}
-  .cta:hover{border-color:var(--ice);transform:translateY(-2px)}
-  hr.rule{border:0;border-top:1px solid var(--line)}
-  section{padding:64px 0}
-  h2{font-size:1.35rem;font-weight:600;letter-spacing:-.01em}
-  .lead{color:var(--muted);font-size:.94rem;margin:8px 0 32px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
-  .cell{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:24px;transition:border-color .28s,transform .28s}
-  .cell:hover{border-color:rgba(143,227,255,.5);transform:translateY(-4px)}
-  .num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ice)}
-  .cell h3{font-size:1rem;font-weight:600;margin:12px 0 8px}
-  .cell p{color:var(--muted);font-size:.875rem;line-height:1.7}
-  .board{border:1px solid var(--line);border-radius:3px;background:var(--card);padding:26px}
-  #sky{width:100%;height:190px;display:block;border-radius:2px;background:#04070a}
-  .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;justify-content:center}
-  button{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:2px;padding:9px 15px;cursor:pointer;transition:border-color .2s,color .2s}
-  button:hover{border-color:var(--moss);color:var(--moss)}
-  #out{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--dusk);text-align:center;margin-top:16px;min-height:18px}
-  .list{list-style:none}
-  .list li{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);color:var(--muted);font-size:.9rem}
-  .list li span{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ice);min-width:34px}
-  footer{padding:52px 0 72px;color:var(--muted);font-size:12px;font-family:'JetBrains Mono',monospace;text-align:center;border-top:1px solid var(--line)}
+
+  .wrap{position:relative;z-index:1;max-width:1020px;margin:0 auto;padding:0 24px}
+
+  nav{position:sticky;top:0;z-index:20;background:rgba(5,7,10,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .brand{font-weight:900;font-size:15px;letter-spacing:.01em}
+  .brand span{color:var(--lime)}
+  nav .links a{color:var(--muted);text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-left:20px;transition:color .2s}
+  nav .links a:hover{color:var(--lime)}
+
+  header{padding:112px 0 84px;position:relative}
+  .kicker{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.36em;text-transform:uppercase;color:var(--coral)}
+  h1{font-size:clamp(2.4rem,8vw,5rem);font-weight:900;line-height:.98;letter-spacing:-.04em;margin:20px 0 22px;max-width:15ch}
+  h1 i{font-style:italic;font-weight:300;color:var(--lime)}
+  header p{color:var(--muted);max-width:50ch;font-size:1.06rem;line-height:1.78;font-family:system-ui,sans-serif}
+  .acts{margin-top:34px;display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:13px 27px;border-radius:999px;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;transition:transform .24s,background .24s,color .24s}
+  .btn.solid{background:var(--lime);color:#06120a}
+  .btn.solid:hover{transform:translateY(-2px)}
+  .btn.ghost{border:1px solid var(--line);color:var(--ink)}
+  .btn.ghost:hover{border-color:var(--lime);color:var(--lime)}
+
+  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:14px 0;margin:0 0 8px}
+  .marquee div{display:flex;gap:44px;white-space:nowrap;animation:slide 26s linear infinite;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+  .marquee div b{color:var(--amber);font-weight:500}
+  @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  section{padding:72px 0}
+  h2{font-size:1.5rem;font-weight:600;letter-spacing:-.02em}
+  .sub{color:var(--muted);font-size:.94rem;margin:10px 0 34px;font-family:system-ui,sans-serif}
+
+  .panels{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;transition:border-color .3s,transform .3s}
+  .panel:hover{border-color:rgba(184,242,124,.45);transform:translateY(-5px)}
+  .panel .idx{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--coral)}
+  .panel h3{font-size:1.05rem;font-weight:600;margin:14px 0 9px}
+  .panel p{color:var(--muted);font-size:.88rem;line-height:1.72;font-family:system-ui,sans-serif}
+
+  .stage{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px}
+  #sky{width:100%;height:210px;display:block;border-radius:10px;background:#020406;cursor:crosshair}
+  .modes{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:20px}
+  .modes button{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:10px 18px;cursor:pointer;transition:.22s}
+  .modes button:hover{color:var(--ink);border-color:var(--muted)}
+  .modes button[aria-pressed="true"]{background:var(--lime);border-color:var(--lime);color:#06120a}
+  #readout{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--amber);text-align:center;margin-top:18px;min-height:18px}
+
+  .facts{list-style:none;border-top:1px solid var(--line)}
+  .facts li{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);color:var(--muted);font-size:.9rem;font-family:system-ui,sans-serif}
+  .facts li b{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--lime);min-width:66px;font-weight:500;text-transform:uppercase;letter-spacing:.1em}
+
+  footer{padding:56px 0 80px;border-top:1px solid var(--line);color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;text-align:center}
 </style>
 </head>
 <body>
-<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="glow" aria-hidden="true"><i></i><i></i><i></i></div>
 
 <nav>
   <div class="wrap">
-    <div class="mark">North<b>light</b></div>
-    <div>
-      <a href="#work">Work</a>
+    <div class="brand">GLASS<span>HOUSE</span></div>
+    <div class="links">
+      <a href="#habits">Habits</a>
       <a href="#lab">Lab</a>
-      <a href="#notes">Notes</a>
+      <a href="#facts">Facts</a>
     </div>
   </div>
 </nav>
 
 <header class="wrap">
-  <div class="tag">north · cold air · quiet code</div>
-  <h1>Build small things that <em>glow</em> in the dark.</h1>
-  <p>Northlight is a one-file studio for aurora gradients, canvas motion and interfaces that stay legible on a phone at 3am. No build step, no trackers, no framework — just the browser doing what it already does well.</p>
-  <a class="cta" href="#lab">Open the lab →</a>
+  <div class="kicker">light · weather · small software</div>
+  <h1>Make quiet tools that keep <i>glowing</i> after midnight.</h1>
+  <p>Glasshouse is a one-file studio for soft light, canvas weather and interfaces that stay readable on a phone at 3am. No bundler, no trackers, no framework — the browser already knows how to do this.</p>
+  <div class="acts">
+    <a class="btn solid" href="#lab">Enter the lab</a>
+    <a class="btn ghost" href="#habits">See the habits</a>
+  </div>
 </header>
 
-<hr class="rule" />
+<div class="marquee" aria-hidden="true">
+  <div>
+    <span>one file</span><b>·</b><span>no trackers</span><b>·</b><span>canvas weather</span><b>·</b><span>legible first</span><b>·</b><span>built by hand</span><b>·</b>
+    <span>one file</span><b>·</b><span>no trackers</span><b>·</b><span>canvas weather</span><b>·</b><span>legible first</span><b>·</b><span>built by hand</span><b>·</b>
+  </div>
+</div>
 
-<section id="work" class="wrap">
-  <h2>Three habits</h2>
-  <div class="lead">The constraints that keep this small.</div>
-  <div class="grid">
-    <div class="cell">
-      <div class="num">01</div>
-      <h3>One file, always</h3>
-      <p>Everything ships in a single HTML document. If it needs a bundler, it needs a rethink.</p>
+<section id="habits" class="wrap">
+  <h2>Four habits</h2>
+  <div class="sub">The rules that keep this small enough to trust.</div>
+  <div class="panels">
+    <div class="panel">
+      <div class="idx">01</div>
+      <h3>Ship one file</h3>
+      <p>Every page is a single HTML document. If it needs a build step to exist, it is too heavy to be honest.</p>
     </div>
-    <div class="cell">
-      <div class="num">02</div>
-      <h3>Motion with a reason</h3>
-      <p>Animation marks state and attention. Decoration that never stops moving gets deleted.</p>
+    <div class="panel">
+      <div class="idx">02</div>
+      <h3>Motion means something</h3>
+      <p>Movement marks state and attention. Anything that loops forever without a reason gets removed.</p>
     </div>
-    <div class="cell">
-      <div class="num">03</div>
-      <h3>Legible first</h3>
-      <p>Contrast, tap targets and line length are designed on a phone, then widened for desktop.</p>
+    <div class="panel">
+      <div class="idx">03</div>
+      <h3>Phone before desktop</h3>
+      <p>Contrast, tap targets and line length are designed on a small screen, then widened — never the reverse.</p>
+    </div>
+    <div class="panel">
+      <div class="idx">04</div>
+      <h3>Nothing phones home</h3>
+      <p>No analytics, no cookies, no third-party scripts. What happens in the lab stays on the device.</p>
     </div>
   </div>
 </section>
 
 <section id="lab" class="wrap">
   <h2>Lab</h2>
-  <div class="lead">Press anything. Nothing leaves your device.</div>
-  <div class="board">
+  <div class="sub">Drag across the canvas, then pick a weather. Nothing leaves your device.</div>
+  <div class="stage">
     <canvas id="sky"></canvas>
-    <div class="row">
-      <button data-mode="aurora">aurora</button>
-      <button data-mode="snow">snow</button>
-      <button data-mode="calm">calm</button>
+    <div class="modes">
+      <button data-mode="rain" aria-pressed="true">rain</button>
+      <button data-mode="dust" aria-pressed="false">dust</button>
+      <button data-mode="ember" aria-pressed="false">ember</button>
     </div>
-    <div id="out">mode · aurora</div>
+    <div id="readout">weather · rain</div>
   </div>
 </section>
 
-<section id="notes" class="wrap">
-  <h2>Notes</h2>
-  <div class="lead">What this page is actually made of.</div>
-  <ul class="list">
-    <li><span>css</span> custom properties, clamp() type scale, backdrop blur on the nav only</li>
-    <li><span>js</span> one canvas, one animation frame loop, three particle modes</li>
-    <li><span>net</span> two Google Fonts requests; everything else is inline</li>
-    <li><span>privacy</span> no analytics, no cookies, no external scripts</li>
+<section id="facts" class="wrap">
+  <h2>Facts</h2>
+  <div class="sub">What this page is actually made of.</div>
+  <ul class="facts">
+    <li><b>css</b> custom properties, clamp() type, one sticky blurred nav, zero utility classes</li>
+    <li><b>js</b> a single canvas, one requestAnimationFrame loop, three particle behaviours</li>
+    <li><b>net</b> two font requests; every other byte is inline in this document</li>
+    <li><b>privacy</b> no analytics, no cookies, no remote scripts, no storage</li>
   </ul>
 </section>
 
-<footer>NORTHLIGHT — hand-built, 2026</footer>
+<footer>Glasshouse — hand-built, one file, 2026</footer>
 
 <script>
 const cv = document.getElementById('sky');
 const ctx = cv.getContext('2d');
-const out = document.getElementById('out');
-let W = 0, H = 0, dots = [], mode = 'aurora', px = .5, py = .5;
+const readout = document.getElementById('readout');
+const buttons = Array.prototype.slice.call(document.querySelectorAll('.modes button'));
 
-function size(){
-  const d = devicePixelRatio || 1;
-  W = cv.width = cv.clientWidth * d;
-  H = cv.height = cv.clientHeight * d;
-  dots = [];
-  const n = Math.min(160, Math.round(cv.clientWidth / 6));
+let W = 0, H = 0, DPR = 1, parts = [];
+let mode = 'rain';
+let px = .5, py = .5;
+let last = 0;
+
+function makeParticles(){
+  parts = [];
+  const n = Math.min(180, Math.max(60, Math.round(cv.clientWidth / 5)));
   for (let i = 0; i < n; i++){
-    dots.push({ x: Math.random() * W, y: Math.random() * H, r: (Math.random() * 1.7 + .4) * d, s: Math.random() * .5 + .08, h: Math.random() * 360 });
+    parts.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: Math.random() * 1.9 + .5,
+      vy: Math.random() * .7 + .18,
+      vx: (Math.random() - .5) * .28,
+      hue: Math.random() * 360,
+      wob: Math.random() * 6.283
+    });
   }
 }
 
-function tint(h){
-  if (mode === 'aurora') return 'hsla(' + (185 + (h % 60)) + ',92%,76%,';
-  if (mode === 'snow') return 'hsla(200,40%,94%,';
-  return 'hsla(' + (150 + (h % 40)) + ',60%,70%,';
+function size(){
+  DPR = Math.min(window.devicePixelRatio || 1, 2);
+  W = cv.width = Math.round(cv.clientWidth * DPR);
+  H = cv.height = Math.round(cv.clientHeight * DPR);
+  makeParticles();
+}
+
+function colorFor(p, alpha){
+  if (mode === 'rain') return 'hsla(' + (196 + (p.hue % 34)) + ',88%,74%,' + alpha + ')';
+  if (mode === 'dust') return 'hsla(' + (42 + (p.hue % 26)) + ',84%,68%,' + alpha + ')';
+  return 'hsla(' + (12 + (p.hue % 24)) + ',92%,62%,' + alpha + ')';
 }
 
 function draw(t){
+  const dt = Math.min(34, t - last || 16);
+  last = t;
   ctx.clearRect(0, 0, W, H);
-  const ox = (px - .5) * 24;
-  const oy = (py - .5) * 24;
-  for (const d of dots){
-    const sp = mode === 'snow' ? d.s * 1.7 : mode === 'calm' ? d.s * .35 : d.s;
-    d.y += sp;
-    if (d.y > H + 8){ d.y = -8; d.x = Math.random() * W; }
-    const a = mode === 'calm' ? .38 : .45 + .5 * Math.abs(Math.sin(t / 1100 + d.x));
+
+  const ox = (px - .5) * 26 * DPR;
+  const oy = (py - .5) * 26 * DPR;
+
+  for (const p of parts){
+    let sp = p.vy;
+    if (mode === 'rain') sp = p.vy * 2.1;
+    else if (mode === 'ember') sp = -p.vy * 1.15;
+    else sp = p.vy * .42;
+
+    p.y += sp * (dt / 16);
+    p.x += (p.vx + (mode === 'dust' ? Math.sin(t / 900 + p.wob) * .22 : 0)) * (dt / 16);
+
+    if (p.y > H + 10){ p.y = -10; p.x = Math.random() * W; }
+    if (p.y < -12){ p.y = H + 8; p.x = Math.random() * W; }
+    if (p.x > W + 10) p.x = -10;
+    if (p.x < -10) p.x = W + 10;
+
+    let a = .38 + .5 * Math.abs(Math.sin(t / 1200 + p.wob));
+    if (mode === 'dust') a = .26 + .3 * Math.abs(Math.sin(t / 1800 + p.wob));
+
     ctx.beginPath();
-    ctx.fillStyle = tint(d.h) + a.toFixed(2) + ')';
-    ctx.arc(d.x + ox, d.y + oy, d.r, 0, 6.2832);
+    ctx.fillStyle = colorFor(p, a.toFixed(2));
+    ctx.arc(p.x + ox, p.y + oy, p.r * DPR, 0, 6.2832);
     ctx.fill();
   }
   requestAnimationFrame(draw);
 }
 
-addEventListener('resize', size);
-addEventListener('pointermove', e => { px = e.clientX / innerWidth; py = e.clientY / innerHeight; });
-document.querySelectorAll('button').forEach(function(b){
-  b.addEventListener('click', function(){
-    mode = b.getAttribute('data-mode');
-    out.textContent = 'mode · ' + mode;
+function setMode(m){
+  mode = m;
+  readout.textContent = 'weather · ' + mode;
+  buttons.forEach(function(b){
+    b.setAttribute('aria-pressed', b.getAttribute('data-mode') === mode ? 'true' : 'false');
   });
+}
+
+buttons.forEach(function(b){
+  b.addEventListener('click', function(){ setMode(b.getAttribute('data-mode')); });
 });
+
+addEventListener('resize', size);
+addEventListener('pointermove', function(e){
+  px = e.clientX / innerWidth;
+  py = e.clientY / innerHeight;
+});
+
 size();
 requestAnimationFrame(draw);
 </script>
