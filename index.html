@@ -3,195 +3,202 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="GLASSHOUSE — a small studio for light, weather and interfaces that keep working at 3am." />
-<title>Glasshouse</title>
+<meta name="description" content="EMBERLINE — a small workshop for warm light, paper textures and interfaces that stay calm at 3am." />
+<title>Emberline</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,600;9..144,900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --bg:#05070a;
-    --panel:#0b1016;
-    --ink:#eef4f2;
-    --muted:#78878d;
-    --lime:#b8f27c;
-    --coral:#ff7a6b;
-    --amber:#ffc861;
-    --line:rgba(255,255,255,.09);
+    --paper:#f4efe6;
+    --ink:#1b1a17;
+    --soft:#6d675c;
+    --rule:#d8cfc0;
+    --ember:#e2542b;
+    --sun:#f0a03c;
+    --moss:#4f6b4a;
+    --card:#fffaf1;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--ink);font-family:'Fraunces',Georgia,serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  body{background:var(--paper);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
-  .glow{position:fixed;inset:0;z-index:0;pointer-events:none}
-  .glow i{position:absolute;display:block;border-radius:50%;filter:blur(90px);opacity:.34;animation:sway 26s ease-in-out infinite}
-  .glow i:nth-child(1){width:520px;height:380px;background:var(--lime);top:-110px;right:8%}
-  .glow i:nth-child(2){width:440px;height:320px;background:var(--coral);bottom:-90px;left:-100px;animation-delay:-9s}
-  .glow i:nth-child(3){width:380px;height:300px;background:var(--amber);top:42%;left:52%;animation-delay:-17s}
-  @keyframes sway{
-    0%,100%{transform:translate3d(0,0,0) scale(1)}
-    45%{transform:translate3d(-38px,30px,0) scale(1.12)}
-    75%{transform:translate3d(30px,-24px,0) scale(.94)}
-  }
+  .grain{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background-image:radial-gradient(rgba(27,26,23,.05) 1px, transparent 1px);
+    background-size:4px 4px}
+  .wash{position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(ellipse 60% 45% at 88% -5%, rgba(240,160,60,.30), transparent 60%),
+      radial-gradient(ellipse 55% 40% at 4% 12%, rgba(226,84,43,.16), transparent 62%),
+      radial-gradient(ellipse 50% 45% at 60% 108%, rgba(79,107,74,.16), transparent 62%)}
 
-  .wrap{position:relative;z-index:1;max-width:1020px;margin:0 auto;padding:0 24px}
+  .wrap{position:relative;z-index:1;max-width:1040px;margin:0 auto;padding:0 26px}
 
-  nav{position:sticky;top:0;z-index:20;background:rgba(5,7,10,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
-  .brand{font-weight:900;font-size:15px;letter-spacing:.01em}
-  .brand span{color:var(--lime)}
-  nav .links a{color:var(--muted);text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-left:20px;transition:color .2s}
-  nav .links a:hover{color:var(--lime)}
+  nav{position:sticky;top:0;z-index:20;background:rgba(244,239,230,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .mark{font-weight:700;font-size:15px;letter-spacing:-.01em}
+  .mark b{color:var(--ember)}
+  nav .nav a{color:var(--soft);text-decoration:none;font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-left:22px;transition:color .2s}
+  nav .nav a:hover{color:var(--ember)}
 
-  header{padding:112px 0 84px;position:relative}
-  .kicker{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.36em;text-transform:uppercase;color:var(--coral)}
-  h1{font-size:clamp(2.4rem,8vw,5rem);font-weight:900;line-height:.98;letter-spacing:-.04em;margin:20px 0 22px;max-width:15ch}
-  h1 i{font-style:italic;font-weight:300;color:var(--lime)}
-  header p{color:var(--muted);max-width:50ch;font-size:1.06rem;line-height:1.78;font-family:system-ui,sans-serif}
-  .acts{margin-top:34px;display:flex;gap:12px;flex-wrap:wrap}
-  .btn{display:inline-block;padding:13px 27px;border-radius:999px;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;transition:transform .24s,background .24s,color .24s}
-  .btn.solid{background:var(--lime);color:#06120a}
-  .btn.solid:hover{transform:translateY(-2px)}
-  .btn.ghost{border:1px solid var(--line);color:var(--ink)}
-  .btn.ghost:hover{border-color:var(--lime);color:var(--lime)}
+  header{padding:104px 0 76px;border-bottom:1px solid var(--rule)}
+  .eyebrow{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--ember);font-weight:500}
+  h1{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(2.6rem,9vw,5.6rem);line-height:.95;letter-spacing:-.03em;margin:20px 0 24px;max-width:14ch}
+  h1 em{font-style:italic;color:var(--ember)}
+  header p{color:var(--soft);max-width:54ch;font-size:1.06rem;line-height:1.75}
+  .acts{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap}
+  .a{display:inline-block;padding:14px 28px;border-radius:2px;text-decoration:none;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;transition:transform .22s,background .22s,color .22s}
+  .a.fill{background:var(--ink);color:var(--paper)}
+  .a.fill:hover{transform:translateY(-2px);background:var(--ember)}
+  .a.line{border:1px solid var(--ink);color:var(--ink)}
+  .a.line:hover{background:var(--ink);color:var(--paper)}
 
-  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:14px 0;margin:0 0 8px}
-  .marquee div{display:flex;gap:44px;white-space:nowrap;animation:slide 26s linear infinite;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
-  .marquee div b{color:var(--amber);font-weight:500}
-  @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));border-bottom:1px solid var(--rule)}
+  .stat{padding:26px 26px 30px;border-right:1px solid var(--rule)}
+  .stat:last-child{border-right:0}
+  .stat b{display:block;font-family:'Instrument Serif',Georgia,serif;font-size:2rem;font-weight:400;color:var(--ember)}
+  .stat span{display:block;margin-top:6px;color:var(--soft);font-size:.86rem;letter-spacing:.02em}
 
-  section{padding:72px 0}
-  h2{font-size:1.5rem;font-weight:600;letter-spacing:-.02em}
-  .sub{color:var(--muted);font-size:.94rem;margin:10px 0 34px;font-family:system-ui,sans-serif}
+  section{padding:76px 0;border-bottom:1px solid var(--rule)}
+  h2{font-family:'Instrument Serif',Georgia,serif;font-size:2rem;font-weight:400;letter-spacing:-.02em}
+  .lede{color:var(--soft);font-size:.96rem;margin:10px 0 38px;max-width:50ch;line-height:1.7}
 
-  .panels{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-  .panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;transition:border-color .3s,transform .3s}
-  .panel:hover{border-color:rgba(184,242,124,.45);transform:translateY(-5px)}
-  .panel .idx{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--coral)}
-  .panel h3{font-size:1.05rem;font-weight:600;margin:14px 0 9px}
-  .panel p{color:var(--muted);font-size:.88rem;line-height:1.72;font-family:system-ui,sans-serif}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+  .card{background:var(--card);border:1px solid var(--rule);border-radius:4px;padding:28px;transition:transform .28s,box-shadow .28s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(27,26,23,.09)}
+  .card .n{font-size:11px;letter-spacing:.2em;color:var(--ember)}
+  .card h3{font-family:'Instrument Serif',Georgia,serif;font-size:1.3rem;font-weight:400;margin:14px 0 10px}
+  .card p{color:var(--soft);font-size:.9rem;line-height:1.72}
 
-  .stage{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px}
-  #sky{width:100%;height:210px;display:block;border-radius:10px;background:#020406;cursor:crosshair}
-  .modes{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:20px}
-  .modes button{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:10px 18px;cursor:pointer;transition:.22s}
-  .modes button:hover{color:var(--ink);border-color:var(--muted)}
-  .modes button[aria-pressed="true"]{background:var(--lime);border-color:var(--lime);color:#06120a}
-  #readout{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--amber);text-align:center;margin-top:18px;min-height:18px}
+  .bench{background:var(--card);border:1px solid var(--rule);border-radius:4px;padding:28px}
+  #canvas{width:100%;height:230px;display:block;border-radius:2px;background:#171512;cursor:crosshair}
+  .chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:22px}
+  .chips button{font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);background:transparent;border:1px solid var(--rule);border-radius:2px;padding:10px 18px;cursor:pointer;transition:.2s}
+  .chips button:hover{border-color:var(--ink);color:var(--ink)}
+  .chips button[aria-pressed="true"]{background:var(--ember);border-color:var(--ember);color:#fff}
+  #read{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);text-align:center;margin-top:18px;min-height:16px}
 
-  .facts{list-style:none;border-top:1px solid var(--line)}
-  .facts li{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);color:var(--muted);font-size:.9rem;font-family:system-ui,sans-serif}
-  .facts li b{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--lime);min-width:66px;font-weight:500;text-transform:uppercase;letter-spacing:.1em}
+  .list{list-style:none}
+  .list li{display:flex;gap:18px;padding:17px 0;border-bottom:1px solid var(--rule);color:var(--soft);font-size:.92rem;line-height:1.65}
+  .list li b{font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);min-width:74px;font-weight:500;padding-top:3px}
 
-  footer{padding:56px 0 80px;border-top:1px solid var(--line);color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;text-align:center}
+  footer{padding:54px 0 82px;color:var(--soft);font-size:11px;letter-spacing:.22em;text-transform:uppercase;text-align:center}
 </style>
 </head>
 <body>
-<div class="glow" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="wash" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
 
 <nav>
   <div class="wrap">
-    <div class="brand">GLASS<span>HOUSE</span></div>
-    <div class="links">
-      <a href="#habits">Habits</a>
-      <a href="#lab">Lab</a>
-      <a href="#facts">Facts</a>
+    <div class="mark">Ember<b>line</b></div>
+    <div class="nav">
+      <a href="#craft">Craft</a>
+      <a href="#bench">Bench</a>
+      <a href="#notes">Notes</a>
     </div>
   </div>
 </nav>
 
-<header class="wrap">
-  <div class="kicker">light · weather · small software</div>
-  <h1>Make quiet tools that keep <i>glowing</i> after midnight.</h1>
-  <p>Glasshouse is a one-file studio for soft light, canvas weather and interfaces that stay readable on a phone at 3am. No bundler, no trackers, no framework — the browser already knows how to do this.</p>
-  <div class="acts">
-    <a class="btn solid" href="#lab">Enter the lab</a>
-    <a class="btn ghost" href="#habits">See the habits</a>
+<header>
+  <div class="wrap">
+    <div class="eyebrow">warm light · paper · quiet interfaces</div>
+    <h1>Small tools that stay <em>warm</em> long after dark.</h1>
+    <p>Emberline is a one-file workshop for soft gradients, paper textures and interfaces that read clearly on a phone at 3am. No bundler, no trackers, no framework — just the browser, doing what it already does well.</p>
+    <div class="acts">
+      <a class="a fill" href="#bench">Open the bench</a>
+      <a class="a line" href="#craft">Read the craft</a>
+    </div>
   </div>
 </header>
 
-<div class="marquee" aria-hidden="true">
-  <div>
-    <span>one file</span><b>·</b><span>no trackers</span><b>·</b><span>canvas weather</span><b>·</b><span>legible first</span><b>·</b><span>built by hand</span><b>·</b>
-    <span>one file</span><b>·</b><span>no trackers</span><b>·</b><span>canvas weather</span><b>·</b><span>legible first</span><b>·</b><span>built by hand</span><b>·</b>
-  </div>
+<div class="stats">
+  <div class="wrap"></div>
+  <div class="stat"><b>1</b><span>HTML file, start to finish</span></div>
+  <div class="stat"><b>0</b><span>cookies, trackers or remote scripts</span></div>
+  <div class="stat"><b>3</b><span>light modes on one canvas</span></div>
 </div>
 
-<section id="habits" class="wrap">
-  <h2>Four habits</h2>
-  <div class="sub">The rules that keep this small enough to trust.</div>
-  <div class="panels">
-    <div class="panel">
-      <div class="idx">01</div>
-      <h3>Ship one file</h3>
-      <p>Every page is a single HTML document. If it needs a build step to exist, it is too heavy to be honest.</p>
-    </div>
-    <div class="panel">
-      <div class="idx">02</div>
-      <h3>Motion means something</h3>
-      <p>Movement marks state and attention. Anything that loops forever without a reason gets removed.</p>
-    </div>
-    <div class="panel">
-      <div class="idx">03</div>
-      <h3>Phone before desktop</h3>
-      <p>Contrast, tap targets and line length are designed on a small screen, then widened — never the reverse.</p>
-    </div>
-    <div class="panel">
-      <div class="idx">04</div>
-      <h3>Nothing phones home</h3>
-      <p>No analytics, no cookies, no third-party scripts. What happens in the lab stays on the device.</p>
+<section id="craft">
+  <div class="wrap">
+    <h2>The craft rules</h2>
+    <div class="lede">Four constraints that keep this small enough to trust.</div>
+    <div class="cards">
+      <div class="card">
+        <div class="n">01</div>
+        <h3>One file, always</h3>
+        <p>Every page ships as a single HTML document. If it needs a build step to exist, it is too heavy to be honest.</p>
+      </div>
+      <div class="card">
+        <div class="n">02</div>
+        <h3>Motion earns its place</h3>
+        <p>Movement marks state and attention. Anything that loops forever without a reason gets cut.</p>
+      </div>
+      <div class="card">
+        <div class="n">03</div>
+        <h3>Phone first, always</h3>
+        <p>Contrast, tap targets and line length are designed on a small screen, then widened — never the reverse.</p>
+      </div>
+      <div class="card">
+        <div class="n">04</div>
+        <h3>Nothing phones home</h3>
+        <p>No analytics, no cookies, no third-party scripts. What happens on the bench stays on the device.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="lab" class="wrap">
-  <h2>Lab</h2>
-  <div class="sub">Drag across the canvas, then pick a weather. Nothing leaves your device.</div>
-  <div class="stage">
-    <canvas id="sky"></canvas>
-    <div class="modes">
-      <button data-mode="rain" aria-pressed="true">rain</button>
-      <button data-mode="dust" aria-pressed="false">dust</button>
-      <button data-mode="ember" aria-pressed="false">ember</button>
+<section id="bench">
+  <div class="wrap">
+    <h2>The bench</h2>
+    <div class="lede">Move across the canvas, then pick a light. Nothing leaves your device.</div>
+    <div class="bench">
+      <canvas id="canvas"></canvas>
+      <div class="chips">
+        <button data-mode="ember" aria-pressed="true">ember</button>
+        <button data-mode="ash" aria-pressed="false">ash</button>
+        <button data-mode="field" aria-pressed="false">field</button>
+      </div>
+      <div id="read">light · ember</div>
     </div>
-    <div id="readout">weather · rain</div>
   </div>
 </section>
 
-<section id="facts" class="wrap">
-  <h2>Facts</h2>
-  <div class="sub">What this page is actually made of.</div>
-  <ul class="facts">
-    <li><b>css</b> custom properties, clamp() type, one sticky blurred nav, zero utility classes</li>
-    <li><b>js</b> a single canvas, one requestAnimationFrame loop, three particle behaviours</li>
-    <li><b>net</b> two font requests; every other byte is inline in this document</li>
-    <li><b>privacy</b> no analytics, no cookies, no remote scripts, no storage</li>
-  </ul>
+<section id="notes">
+  <div class="wrap">
+    <h2>Notes</h2>
+    <div class="lede">What this page is actually made of.</div>
+    <ul class="list">
+      <li><b>css</b> custom properties, clamp() type scale, one sticky blurred nav, zero utility classes</li>
+      <li><b>js</b> a single canvas, one requestAnimationFrame loop, three particle behaviours</li>
+      <li><b>net</b> two font requests; every other byte is inline in this document</li>
+      <li><b>privacy</b> no analytics, no cookies, no remote scripts, no storage</li>
+    </ul>
+  </div>
 </section>
 
-<footer>Glasshouse — hand-built, one file, 2026</footer>
+<footer>Emberline — hand-built, one file, 2026</footer>
 
 <script>
-const cv = document.getElementById('sky');
+const cv = document.getElementById('canvas');
 const ctx = cv.getContext('2d');
-const readout = document.getElementById('readout');
-const buttons = Array.prototype.slice.call(document.querySelectorAll('.modes button'));
+const read = document.getElementById('read');
+const chips = Array.prototype.slice.call(document.querySelectorAll('.chips button'));
 
 let W = 0, H = 0, DPR = 1, parts = [];
-let mode = 'rain';
-let px = .5, py = .5;
-let last = 0;
+let mode = 'ember';
+let px = .5, py = .5, last = 0;
 
-function makeParticles(){
+function seed(){
   parts = [];
-  const n = Math.min(180, Math.max(60, Math.round(cv.clientWidth / 5)));
+  const n = Math.min(190, Math.max(60, Math.round(cv.clientWidth / 5)));
   for (let i = 0; i < n; i++){
     parts.push({
       x: Math.random() * W,
       y: Math.random() * H,
-      r: Math.random() * 1.9 + .5,
-      vy: Math.random() * .7 + .18,
-      vx: (Math.random() - .5) * .28,
+      r: Math.random() * 2 + .6,
+      vy: Math.random() * .8 + .2,
+      vx: (Math.random() - .5) * .3,
       hue: Math.random() * 360,
       wob: Math.random() * 6.283
     });
@@ -202,13 +209,13 @@ function size(){
   DPR = Math.min(window.devicePixelRatio || 1, 2);
   W = cv.width = Math.round(cv.clientWidth * DPR);
   H = cv.height = Math.round(cv.clientHeight * DPR);
-  makeParticles();
+  seed();
 }
 
-function colorFor(p, alpha){
-  if (mode === 'rain') return 'hsla(' + (196 + (p.hue % 34)) + ',88%,74%,' + alpha + ')';
-  if (mode === 'dust') return 'hsla(' + (42 + (p.hue % 26)) + ',84%,68%,' + alpha + ')';
-  return 'hsla(' + (12 + (p.hue % 24)) + ',92%,62%,' + alpha + ')';
+function tint(p, a){
+  if (mode === 'ember') return 'hsla(' + (20 + (p.hue % 26)) + ',88%,64%,' + a + ')';
+  if (mode === 'ash') return 'hsla(' + (210 + (p.hue % 30)) + ',22%,82%,' + a + ')';
+  return 'hsla(' + (96 + (p.hue % 34)) + ',42%,58%,' + a + ')';
 }
 
 function draw(t){
@@ -216,44 +223,44 @@ function draw(t){
   last = t;
   ctx.clearRect(0, 0, W, H);
 
-  const ox = (px - .5) * 26 * DPR;
-  const oy = (py - .5) * 26 * DPR;
+  const ox = (px - .5) * 30 * DPR;
+  const oy = (py - .5) * 30 * DPR;
 
   for (const p of parts){
     let sp = p.vy;
-    if (mode === 'rain') sp = p.vy * 2.1;
-    else if (mode === 'ember') sp = -p.vy * 1.15;
-    else sp = p.vy * .42;
+    if (mode === 'ember') sp = -p.vy * 1.05;
+    else if (mode === 'ash') sp = p.vy * .55;
+    else sp = p.vy * .3;
 
     p.y += sp * (dt / 16);
-    p.x += (p.vx + (mode === 'dust' ? Math.sin(t / 900 + p.wob) * .22 : 0)) * (dt / 16);
+    p.x += (p.vx + (mode === 'field' ? Math.sin(t / 950 + p.wob) * .2 : 0)) * (dt / 16);
 
-    if (p.y > H + 10){ p.y = -10; p.x = Math.random() * W; }
     if (p.y < -12){ p.y = H + 8; p.x = Math.random() * W; }
-    if (p.x > W + 10) p.x = -10;
-    if (p.x < -10) p.x = W + 10;
+    if (p.y > H + 12){ p.y = -10; p.x = Math.random() * W; }
+    if (p.x > W + 12) p.x = -10;
+    if (p.x < -12) p.x = W + 10;
 
-    let a = .38 + .5 * Math.abs(Math.sin(t / 1200 + p.wob));
-    if (mode === 'dust') a = .26 + .3 * Math.abs(Math.sin(t / 1800 + p.wob));
+    let a = .34 + .48 * Math.abs(Math.sin(t / 1150 + p.wob));
+    if (mode === 'ash') a = .22 + .26 * Math.abs(Math.sin(t / 1900 + p.wob));
 
     ctx.beginPath();
-    ctx.fillStyle = colorFor(p, a.toFixed(2));
+    ctx.fillStyle = tint(p, a.toFixed(2));
     ctx.arc(p.x + ox, p.y + oy, p.r * DPR, 0, 6.2832);
     ctx.fill();
   }
   requestAnimationFrame(draw);
 }
 
-function setMode(m){
+function pick(m){
   mode = m;
-  readout.textContent = 'weather · ' + mode;
-  buttons.forEach(function(b){
+  read.textContent = 'light · ' + mode;
+  chips.forEach(function(b){
     b.setAttribute('aria-pressed', b.getAttribute('data-mode') === mode ? 'true' : 'false');
   });
 }
 
-buttons.forEach(function(b){
-  b.addEventListener('click', function(){ setMode(b.getAttribute('data-mode')); });
+chips.forEach(function(b){
+  b.addEventListener('click', function(){ pick(b.getAttribute('data-mode')); });
 });
 
 addEventListener('resize', size);
