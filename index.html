@@ -1,99 +1,188 @@
 <!DOCTYPE html>
-
-<html lang="en"> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <meta name="description" content="Personal portfolio — designer & developer. Selected work, skills and contact." /> <meta name="theme-color" content="#f4f1ea" /> <title>PORTFOLIO — Selected Work</title> <link rel="preconnect" href="https://fonts.googleapis.com" /> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,600;9..144,900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" /> <style> :root{ --paper:#f4f1ea; --paper2:#eae5da; --ink:#141210; --ink2:#3d3833; --muted:#8a8177; --rule:#d5cec1; --accent:#c8452b; --accent2:#1c4b8a; } *{box-sizing:border-box;margin:0;padding:0} html{scroll-behavior:smooth} body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden} ::selection{background:var(--ink);color:var(--paper)}
-
-.wrap{max-width:1180px;margin:0 auto;padding:0 26px}
-.mono{font-family:'JetBrains Mono',monospace}
-
-nav{position:sticky;top:0;z-index:30;background:rgba(244,241,234,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
-.brand{font-family:'Fraunces',serif;font-weight:900;font-size:1.06rem;letter-spacing:-.02em}
-.brand span{color:var(--accent)}
-.nav-links{display:flex;gap:24px;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
-.nav-links a{color:var(--muted);text-decoration:none;transition:color .2s}
-.nav-links a:hover{color:var(--ink)}
-@media(max-width:700px){.nav-links{display:none}}
-.issue{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-@media(max-width:700px){.issue{display:none}}
-
-header{padding:70px 0 40px;border-bottom:1px solid var(--rule)}
-.kicker{display:flex;align-items:center;gap:14px;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:26px}
-.kicker::after{content:'';flex:1;height:1px;background:var(--rule)}
-h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(2.6rem,9vw,6.2rem);line-height:.94;letter-spacing:-.035em;font-variation-settings:'opsz' 144}
-h1 em{font-style:italic;font-weight:300;color:var(--accent)}
-.masthead{display:grid;grid-template-columns:1.6fr .9fr;gap:48px;align-items:end;margin-top:40px}
-@media(max-width:900px){.masthead{grid-template-columns:1fr;gap:26px}}
-.standfirst{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(1.12rem,2.3vw,1.5rem);line-height:1.5;color:var(--ink2);max-width:34ch}
-.standfirst b{font-weight:600}
-.byline{border-left:2px solid var(--ink);padding-left:16px}
-.byline dt{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
-.byline dd{font-family:'Fraunces',serif;font-weight:600;font-size:1rem;margin-bottom:14px}
-.byline dd:last-child{margin-bottom:0}
-
-section{padding:66px 0;border-bottom:1px solid var(--rule)}
-.sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:38px}
-.sec-num{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--accent);letter-spacing:.1em}
-h2{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(1.6rem,4vw,2.6rem);letter-spacing:-.025em;line-height:1.05}
-.sec-head .note{margin-left:auto;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-@media(max-width:640px){.sec-head .note{display:none}}
-
-.work{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--rule)}
-@media(max-width:760px){.work{grid-template-columns:1fr}}
-.card{padding:32px 30px 32px 0;border-bottom:1px solid var(--rule);position:relative;transition:background .25s}
-.work .card:nth-child(odd){padding-right:36px;border-right:1px solid var(--rule)}
-.work .card:nth-child(even){padding-left:36px}
-@media(max-width:760px){.work .card:nth-child(odd){padding-right:0;border-right:none}.work .card:nth-child(even){padding-left:0}}
-.card:hover{background:var(--paper2)}
-.card .no{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.16em;color:var(--accent);text-transform:uppercase}
-.card h3{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.25rem,2.6vw,1.75rem);letter-spacing:-.02em;margin:12px 0 10px;line-height:1.15}
-.card h3::after{content:'\2197';font-size:.8em;color:var(--muted);margin-left:8px;transition:transform .2s,color .2s;display:inline-block}
-.card:hover h3::after{transform:translate(3px,-3px);color:var(--accent)}
-.card p{color:var(--ink2);font-size:.98rem;line-height:1.7;max-width:44ch}
-.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
-.chip{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.06em;color:var(--ink2);border:1px solid var(--rule);border-radius:999px;padding:3px 10px;background:var(--paper)}
-
-.skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0;border-top:1px solid var(--rule)}
-.skill{padding:26px 24px 26px 0;border-bottom:1px solid var(--rule)}
-.skill+.skill{border-left:1px solid var(--rule);padding-left:24px}
-@media(max-width:640px){.skill+.skill{border-left:none;padding-left:0}}
-.skill h4{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;letter-spacing:-.01em;margin-bottom:6px}
-.skill .lvl{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:14px}
-.skill p{color:var(--ink2);font-size:.92rem;line-height:1.65}
-.bar{height:2px;background:var(--rule);margin-top:16px;position:relative;overflow:hidden}
-.bar i{position:absolute;inset:0 auto 0 0;background:var(--ink);display:block}
-
-.about{display:grid;grid-template-columns:1.15fr .85fr;gap:52px;align-items:start}
-@media(max-width:860px){.about{grid-template-columns:1fr;gap:34px}}
-.about .drop::first-letter{font-family:'Fraunces',serif;font-weight:900;font-size:3.6rem;float:left;line-height:.82;padding:6px 12px 0 0;color:var(--accent)}
-.about p{color:var(--ink2);font-size:1.04rem;line-height:1.8;margin-bottom:18px}
-.about p b{color:var(--ink);font-weight:600}
-.timeline{border-top:2px solid var(--ink)}
-.tl-item{padding:20px 0;border-bottom:1px solid var(--rule)}
-.tl-item .yr{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.12em;color:var(--accent)}
-.tl-item b{display:block;font-family:'Fraunces',serif;font-weight:600;font-size:1.02rem;margin:6px 0 4px}
-.tl-item p{color:var(--muted);font-size:.9rem;line-height:1.6;margin:0}
-
-.contact{padding:80px 0;border-bottom:none;text-align:center}
-.contact .kicker{justify-content:center}
-.contact .kicker::after{display:none}
-.contact h2{font-size:clamp(2rem,7vw,4.4rem);margin-bottom:20px}
-.contact h2 em{font-style:italic;font-weight:300;color:var(--accent)}
-.contact p{color:var(--ink2);max-width:52ch;margin:0 auto 34px;font-size:1.05rem;line-height:1.75}
-.cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.btn{font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:15px 30px;border-radius:999px;text-decoration:none;transition:transform .18s,background .18s,color .18s;border:1px solid var(--ink)}
-.btn-primary{background:var(--ink);color:var(--paper)}
-.btn-primary:hover{transform:translateY(-2px);background:var(--accent);border-color:var(--accent)}
-.btn-ghost{color:var(--ink);background:transparent}
-.btn-ghost:hover{background:var(--ink);color:var(--paper)}
-
-footer{padding:34px 0}
-.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.foot a{color:var(--muted);text-decoration:none}
-.foot a:hover{color:var(--ink)}
-
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
-.reveal.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Aurora Lab — an interactive playground of light, motion and code." />
+<title>Aurora Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#05060f;
+    --ink:#eef1ff;
+    --muted:#8b93b8;
+    --accent:#7c5cff;
+    --accent2:#22d3ee;
+    --accent3:#ff4d9d;
+    --card:rgba(255,255,255,.045);
+    --line:rgba(255,255,255,.09);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:'Outfit',system-ui,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  canvas#sky{position:fixed;inset:0;z-index:0;pointer-events:none}
+  .wrap{position:relative;z-index:1;max-width:1040px;margin:0 auto;padding:0 24px}
+  nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(5,6,15,.6);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .brand{font-weight:800;letter-spacing:.16em;font-size:13px;text-transform:uppercase}
+  .brand span{color:var(--accent2)}
+  nav a{color:var(--muted);text-decoration:none;font-size:13px;margin-left:20px;transition:color .25s}
+  nav a:hover{color:var(--ink)}
+  header{padding:110px 0 90px;text-align:center}
+  .kicker{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.3em;color:var(--accent2);text-transform:uppercase}
+  h1{font-size:clamp(2.4rem,8vw,5rem);font-weight:800;line-height:1.02;letter-spacing:-.03em;margin:18px 0 20px}
+  h1 em{font-style:normal;background:linear-gradient(100deg,var(--accent),var(--accent2) 55%,var(--accent3));-webkit-background-clip:text;background-clip:text;color:transparent}
+  header p{color:var(--muted);max-width:560px;margin:0 auto;font-size:1.05rem;line-height:1.7}
+  .btn{display:inline-block;margin-top:34px;padding:13px 30px;border-radius:999px;border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:14px;background:var(--card);transition:transform .25s,border-color .25s}
+  .btn:hover{transform:translateY(-3px);border-color:var(--accent2)}
+  section{padding:70px 0;border-top:1px solid var(--line)}
+  h2{font-size:1.55rem;font-weight:600;margin-bottom:8px}
+  .sub{color:var(--muted);font-size:.95rem;margin-bottom:34px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;transition:transform .3s,border-color .3s}
+  .card:hover{transform:translateY(-5px);border-color:rgba(124,92,255,.55)}
+  .card .ico{font-size:22px}
+  .card h3{font-size:1.05rem;margin:14px 0 8px;font-weight:600}
+  .card p{color:var(--muted);font-size:.9rem;line-height:1.65}
+  .demo{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;text-align:center}
+  #orb{width:150px;height:150px;margin:0 auto 20px;border-radius:50%;background:radial-gradient(circle at 34% 32%,#fff,var(--accent2) 26%,var(--accent) 62%,#1a0f3d);box-shadow:0 0 60px rgba(124,92,255,.45);transition:transform .2s}
+  .demo p{color:var(--muted);font-size:.9rem}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:22px}
+  .chip{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:7px 15px;transition:color .25s,border-color .25s}
+  .chip:hover{color:var(--accent2);border-color:var(--accent2)}
+  #tick{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent3);margin-top:18px}
+  footer{padding:50px 0 70px;text-align:center;color:var(--muted);font-size:12px;font-family:'JetBrains Mono',monospace}
 </style>
+</head>
+<body>
+<canvas id="sky"></canvas>
 
-</head> <body><nav> <div class="wrap nav-inner"> <div class="brand">PORT<span>FOLIO</span></div> <div class="issue">Vol. 2026 — Selected Work</div> <div class="nav-links"> <a href="#work">Work</a> <a href="#skills">Skills</a> <a href="#about">About</a> <a href="#contact">Contact</a> </div> </div> </nav><header> <div class="wrap"> <div class="kicker">Available for select projects</div> <h1>Design.<br />Build.<br /><em>Ship quietly brilliant.</em></h1> <div class="masthead"> <p class="standfirst reveal">আমি ইন্টারফেস ডিজাইন আর ফ্রন্ট-এন্ড ডেভেলপমেন্ট নিয়ে কাজ করি — যেখানে <b>সৌন্দর্য আর পারফরম্যান্স</b> একসাথে চলে। কোনো বাড়তি ফ্রেমওয়ার্ক নয়, শুধু পরিষ্কার কোড আর যত্ন নেওয়া ডিটেইল।</p> <dl class="byline reveal"> <dt>Role</dt> <dd>Designer &amp; Developer</dd> <dt>Focus</dt> <dd>Interface · Front-end · Tooling</dd> <dt>Status</dt> <dd>Open to work</dd> </dl> </div> </div> </header><section id="work"> <div class="wrap"> <div class="sec-head"><span class="sec-num">01</span><h2>Selected Work</h2><span class="note">নির্বাচিত কিছু কাজ</span></div> <div class="work"> <article class="card reveal"> <span class="no">Project 01</span> <h3>Nebula Dashboard</h3> <p>একটি রিয়েল-টাইম অ্যানালিটিক্স ড্যাশবোর্ড — লাইটওয়েট, দ্রুত, আর ডেটা-ডেন্স লেআউটে স্পষ্ট।</p> <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Chart.js</span></div> </article> <article class="card reveal"> <span class="no">Project 02</span> <h3>Kite Commerce</h3> <p>ছোট ব্যবসার জন্য একটি স্টোরফ্রন্ট — মোবাইল-ফার্স্ট, দ্রুত লোড, সিম্পল চেকআউট।</p> <div class="chips"><span class="chip">UI/UX</span><span class="chip">JS</span><span class="chip">Responsive</span></div> </article> <article class="card reveal"> <span class="no">Project 03</span> <h3>Pulse Landing Kit</h3> <p>সিঙ্গেল-ফাইল ল্যান্ডিং টেমপ্লেট কিট — বিল্ড স্টেপ নেই, কপি করলেই ব্যবহারযোগ্য।</p> <div class="chips"><span class="chip">Template</span><span class="chip">Zero-build</span><span class="chip">A11y</span></div> </article> <article class="card reveal"> <span class="no">Project 04</span> <h3>Quiet Portfolio</h3> <p>একটি মিনিমাল পোর্টফোলিও সিস্টেম — টাইপোগ্রাফি-কেন্দ্রিক, রিডেবিলিটি প্রাধান্য পায়।</p> <div class="chips"><span class="chip">Design</span><span class="chip">CSS Grid</span><span class="chip">Motion</span></div> </article> </div> </div> </section><section id="skills"> <div class="wrap"> <div class="sec-head"><span class="sec-num">02</span><h2>Skills</h2><span class="note">যা দিয়ে কাজ করি</span></div> <div class="skill-grid"> <div class="skill reveal"> <h4>Interface Design</h4> <div class="lvl">Layout · Type · Color</div> <p>স্ক্রিনের প্রতিটা উপাদান কেন ওখানে আছে — সেটা নিয়ে ভাবি। টাইপোগ্রাফি আর স্পেসিং-ই আসল ডিজাইন।</p> <div class="bar"><i style="width:92%"></i></div> </div> <div class="skill reveal"> <h4>Front-end</h4> <div class="lvl">HTML · CSS · JS</div> <p>ফ্রেমওয়ার্ক ছাড়াই যতটা সম্ভব — সিমান্টিক মার্কআপ, আধুনিক CSS, আর দরকারমতো JS।</p> <div class="bar"><i style="width:88%"></i></div> </div> <div class="skill reveal"> <h4>Performance</h4> <div class="lvl">Speed · Core Web Vitals</div> <p>দ্রুত সাইট শুধু ভালো ফিল করে না, বেশি কনভার্টও করে। বাজেট ধরে ফিট করি।</p> <div class="bar"><i style="width:85%"></i></div> </div> <div class="skill reveal"> <h4>Accessibility</h4> <div class="lvl">WCAG · Semantics</div> <p>সবাই যেন ব্যবহার করতে পারে — কীবোর্ড, স্ক্রিন-রিডার, কম-কনট্রাস্ট ডিসপ্লে সবই ভাবা হয়।</p> <div class="bar"><i style="width:80%"></i></div> </div> </div> </div> </section><section id="about"> <div class="wrap"> <div class="sec-head"><span class="sec-num">03</span><h2>About</h2><span class="note">একটু পরিচয়</span></div> <div class="about"> <div class="reveal"> <p class="drop">আমি ডিজাইন আর কোড—দুটোকেই সমান গুরুত্ব দিই। আমার কাছে ভালো ইন্টারফেস মানে হলো <b>যেটা বুঝতে কষ্ট হয় না</b>, আর ভালো কোড মানে যেটা পরে নিজে পড়েও বুঝতে পারি।</p> <p>বেশিরভাগ কাজ করি ওয়েব নিয়ে — ল্যান্ডিং পেজ, ড্যাশবোর্ড, টুলিং আর ডিজাইন সিস্টেম। ছোট টিমের সাথে সরাসরি কাজ করতে ভালো লাগে, যেখানে আইডিয়া থেকে শিপিং পর্যন্ত পুরোটা দেখা যায়।</p> </div> <div class="timeline reveal"> <div class="tl-item"><span class="yr">2023 — এখন</span><b>Independent</b><p>ফ্রিল্যান্স ডিজাইন ও ফ্রন্ট-এন্ড — ক্লায়েন্টদের সাথে সরাসরি।</p></div> <div class="tl-item"><span class="yr">2020 — 2023</span><b>Product Studio</b><p>প্রোডাক্ট টিমে UI/UX ও ফ্রন্ট-এন্ড ইমপ্লিমেন্টেশন।</p></div> <div class="tl-item"><span class="yr">2018 — 2020</span><b>Self-taught</b><p>HTML/CSS/JS শেখা আর ছোট প্রজেক্ট বানানো থেকে শুরু।</p></div> </div> </div> </div> </section><section id="contact" class="contact"> <div class="wrap"> <div class="kicker reveal">Open to work</div> <h2 class="reveal">Let's build <em>something.</em></h2> <p class="reveal">কোনো আইডিয়া থাকলে বা কাজের কথা বলতে চাইলে একটা মেসেজ দাও — আমি সাধারণত ২৪ ঘণ্টার মধ্যে রিপ্লাই দিই।</p> <div class="cta reveal"> <a class="btn btn-primary" href="mailto:hello@example.com">Say Hello ▸</a> <a class="btn btn-ghost" href="#work">See Work</a> </div> </div> </section><footer> <div class="wrap foot"> <span>© 2026 — Portfolio</span> <span>Built with clean HTML · CSS · JS</span> </div> </footer><script> const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:0.12}); document.querySelectorAll('.reveal').forEach(el => io.observe(el)); </script></body> </html>
+<nav>
+  <div class="wrap">
+    <div class="brand">AURORA<span>·LAB</span></div>
+    <div>
+      <a href="#work">Work</a>
+      <a href="#play">Play</a>
+      <a href="#stack">Stack</a>
+    </div>
+  </div>
+</nav>
+
+<header class="wrap">
+  <div class="kicker">light · motion · code</div>
+  <h1>A small lab for <em>big ideas</em></h1>
+  <p>A minimalist playground where generative visuals, clean interface and quiet engineering meet. Move your cursor — the sky answers.</p>
+  <a class="btn" href="#play">Enter the lab →</a>
+</header>
+
+<section id="work" class="wrap">
+  <h2>Selected work</h2>
+  <div class="sub">Three directions I keep returning to.</div>
+  <div class="cards">
+    <div class="card">
+      <div class="ico">◐</div>
+      <h3>Interface systems</h3>
+      <p>Dark-first design tokens, motion with intent, layouts that breathe on a phone screen.</p>
+    </div>
+    <div class="card">
+      <div class="ico">◇</div>
+      <h3>Generative visuals</h3>
+      <p>Canvas particles, aurora gradients and shaders that respond to pointer and time.</p>
+    </div>
+    <div class="card">
+      <div class="ico">⌁</div>
+      <h3>Quiet engineering</h3>
+      <p>Zero dependencies, static output, fast on a cheap connection. Ship small, ship often.</p>
+    </div>
+  </div>
+</section>
+
+<section id="play" class="wrap">
+  <h2>Play</h2>
+  <div class="sub">Click the orb. Nothing is saved, nothing is sent.</div>
+  <div class="demo">
+    <div id="orb"></div>
+    <p id="tick">tap the orb to burst ✦</p>
+  </div>
+</section>
+
+<section id="stack" class="wrap">
+  <h2>Stack</h2>
+  <div class="sub">Everything here runs in one file.</div>
+  <div class="chips">
+    <span class="chip">html</span>
+    <span class="chip">css</span>
+    <span class="chip">vanilla js</span>
+    <span class="chip">canvas 2d</span>
+    <span class="chip">no build step</span>
+    <span class="chip">no tracking</span>
+  </div>
+</section>
+
+<footer>AURORA·LAB — built by hand, 2026</footer>
+
+<script>
+/* ---------- aurora starfield ---------- */
+const cv = document.getElementById('sky');
+const ctx = cv.getContext('2d');
+let W, H, stars = [], px = 0.5, py = 0.5;
+function resize(){
+  W = cv.width = innerWidth * devicePixelRatio;
+  H = cv.height = innerHeight * devicePixelRatio;
+  stars = [];
+  const n = Math.min(150, Math.round(innerWidth / 9));
+  for (let i = 0; i < n; i++){
+    stars.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: (Math.random() * 1.6 + .4) * devicePixelRatio,
+      s: Math.random() * .32 + .06,
+      hue: Math.random() < .5 ? 262 : 188
+    });
+  }
+}
+addEventListener('resize', resize);
+addEventListener('pointermove', e => { px = e.clientX / innerWidth; py = e.clientY / innerHeight; });
+resize();
+
+function frame(t){
+  ctx.clearRect(0, 0, W, H);
+  const ox = (px - .5) * 26 * devicePixelRatio;
+  const oy = (py - .5) * 26 * devicePixelRatio;
+  for (const s of stars){
+    s.y -= s.s * devicePixelRatio;
+    if (s.y < -6) { s.y = H + 6; s.x = Math.random() * W; }
+    const tw = .45 + .55 * Math.abs(Math.sin(t / 900 + s.x));
+    ctx.beginPath();
+    ctx.fillStyle = 'hsla(' + s.hue + ',90%,78%,' + tw + ')';
+    ctx.arc(s.x + ox, s.y + oy, s.r, 0, 6.2832);
+    ctx.fill();
+  }
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+
+/* ---------- orb ---------- */
+const orb = document.getElementById('orb');
+const tick = document.getElementById('tick');
+const words = ['✦ burst', '♪ ripple', '★ spark', '✧ glow', '◕ bloom'];
+let n = 0;
+orb.addEventListener('click', () => {
+  n++;
+  orb.style.transform = 'scale(1.16)';
+  setTimeout(() => orb.style.transform = 'scale(1)', 180);
+  tick.textContent = words[n % words.length] + '  ·  ' + n + ' taps';
+});
+addEventListener('pointermove', e => {
+  const r = orb.getBoundingClientRect();
+  const dx = (e.clientX - (r.left + r.width / 2)) / 22;
+  const dy = (e.clientY - (r.top + r.height / 2)) / 22;
+  if (Math.abs(dx) < 9 && Math.abs(dy) < 9){
+    orb.style.transform = 'translate(' + (-dx).toFixed(1) + 'px,' + (-dy).toFixed(1) + 'px)';
+  }
+});
+</script>
+</body>
+</html>
